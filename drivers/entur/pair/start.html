@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+	integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<header class="homey-header">
+	<h1 class="homey-title">
+		<!-- This will be filled with the translated string with key 'settings.title'. -->
+	</h1>
+	<p class="homey-subtitle">
+		<!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+	</p>
+</header>
+<fieldset class="homey-form-fieldset">
+	<div class="homey-form-group">
+		<label for="station" class="homey-form-label"><span data-i18n="entur.pair.label"></span></label>
+		<!--<input type="text" id="search" class="homey-input-text" placeholder="Søk etter stasjon">-->
+		<select id="search" style="width: 100%;"></select>
+	</div>
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+	integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="application/javascript">
+	Homey.setTitle(Homey.__("entur.pair.title"));
+	Homey.setSubtitle(Homey.__("entur.pair.desc"));
+	setTimeout(function () {
+		$(document).ready(function () {
+			$('#search').select2({
+				placeholder: 'Søk...',
+				ajax: {
+					url: 'https://api.entur.io/geocoder/v1/autocomplete',
+					dataType: 'json',
+					delay: 400,
+					data: function (params) {
+						return {
+							text: params.term,
+							lang: 'no'
+						};
+					},
+					processResults: function (data) {
+						return {
+							results: $.map(data.features.filter(item =>
+								item.properties.category.includes('onstreetBus') || item.properties.category.includes('railStation')), function (item) {
+									return {
+										text: `${item.properties.label} - ${item.properties.county} (${item.properties.id})`,
+										id: item.properties.id,
+										country_a: item.properties.country_a,
+										county: item.properties.county,
+										label: item.properties.label,
+										locality: item.properties.locality,
+										name: item.properties.name,
+										source_id: item.properties.source_id,
+									};
+								})
+						};
+					},
+					cache: true
+				},
+				minimumInputLength: 2
+			});
+
+			$('#search').on('select2:select', function (e) {
+				var selectedData = e.params.data;
+				//console.log('Valgt:', JSON.stringify(e.params.data));
+				Homey.emit('saveStation', e.params.data).then(function (result) {
+					//console.log(result);
+					if (result === true) {
+						Homey.emit('list_devices').then(function (result) {
+							//console.log(result);
+							Homey.nextView();
+						});
+					}
+				});
+			});
+		});
+	}, 1000);
+</script>

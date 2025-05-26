@@ -1,0 +1,103 @@
+{
+	"renovation": {
+		"pair": {
+			"title": "Renovasjon",
+			"desc": "Fyll inn din adresse under",
+			"info": {
+				"autoAddress": "Finn adressen din her",
+				"address": "Adresse",
+				"housenumber": "Husnummer",
+				"postcode": "Postnummer",
+				"county_id": "Kommunenr",
+				"address_code": "Adressekode"
+			},
+			"loading": {
+				"desc": "Sjekker adressen din mot leverandører"
+			}
+		},
+		"tokens": {
+			"trashcollection": {
+				"today": "i dag",
+				"tomorrow": "i morgen",
+				"dayaftertomorrow": "i overmorgen"
+			}
+		},
+		"device": {
+			"tokens": {
+				"nextWasteTypes": {
+					"title": "Avfall neste henting - __fullAddress__",
+					"value": "Laster..."
+				}
+			}
+		}
+	},
+	"posten-tracking": {
+		"pair": {
+			"title": "Posten sporing",
+			"desc": "Legg inn sporingsnummer i feltet under",
+			"label": "Sporingsnummer"
+		}
+	},
+	"PostNord": {
+		"pair": {
+			"title": "PostNord sporing",
+			"desc": "Legg inn sporingsnummer i feltet under",
+			"label": "Sporingsnummer"	
+		}
+	},
+	"entur": {
+		"pair": {
+			"title": "Entur stasjon overvåkning",
+			"desc": "Skriv inn stasjon i feltet under",
+			"label": "Søk etter stasjon"
+		},
+		"settings": {
+			"title": "Entur innstillinger",
+			"station": "Stasjon",
+			"departureText": "Avgangsinformasjon",
+			"dirSetting": "Retningsinnstillinger for stasjon",
+			"routeSetting": "Ruteinnstillinger for stasjon"
+		},
+		"device": {
+			"slideDepInfo": {
+				"depText": "Neste avgang fra __stopName__",
+				"leavesIn": "går om __dep__",
+				"leavesNow": "går nå",
+				"leavesAt": "går kl. __dep__"
+			},
+			"rotateDepInfo": {
+				"depText": "Neste avgang:",
+				"leavesIn": "Om __dep__",
+				"leavesNow": "Nå",
+				"leavesAt": "kl. __dep__"
+			},
+			"staticDepInfo": {
+				"depText": "Neste avgang:",
+				"leavesIn": "Om __dep__",
+				"leavesNow": "Nå",
+				"leavesAt": "kl. __dep__"
+			}
+		}
+	},
+	"FuelPrices": {
+		"pair": {
+			"title": "Drivstoffpriser",
+			"desc": "Skriv inn stasjon i feltet under",
+			"label": "Søk etter stasjon"
+		}
+	},
+	"waterTemperature": {
+		"pair": {
+			"title": "Badetemperatur",
+			"desc": "Skriv inn badeplass i feltet under",
+			"label": "Søk etter badeplass"
+		}
+	},
+    "airQuality": {
+        "pair": {
+            "title": "Luftkvalitet",
+            "desc": "Skriv inn område eller målestasjon i feltet under",
+            "label": "Søk etter område eller målestasjon"
+        }
+    }
+}

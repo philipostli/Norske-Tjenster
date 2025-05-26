@@ -1,0 +1,48 @@
+<header class="homey-header">
+    <h1 class="homey-title">
+        <!-- This will be filled with the translated string with key 'settings.title'. -->
+    </h1>
+    <p class="homey-subtitle">
+        <!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+    </p>
+</header>
+<fieldset class="homey-form-fieldset">
+    <div class="homey-form-group">
+        <label for="trackingNumber" class="homey-form-label"><span data-i18n="PostNord.pair.label"></span></label>
+        <input id="trackingNumber" class="homey-form-input" type="text" value="" oninput="callAPI()" />
+    </div>
+</fieldset>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="application/javascript">
+    Homey.setTitle(Homey.__("PostNord.pair.title"));
+    Homey.setSubtitle(Homey.__("PostNord.pair.desc"));
+    async function callAPI() {
+        const trackingNumber = document.getElementById('trackingNumber').value;
+        const trackingNumberField = $('#trackingNumber');
+        const value = {
+            "trackingNumber": trackingNumber
+        };
+        /* 
+        Kjør funksjon når trackingNumber's verdi endres etter 500ms, for å unngå å kalle APIet for hver tastetrykk
+        */
+        let timer;
+        trackingNumberField.on('keyup', function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                this.checkTracking(value);
+            }, 500);
+        });
+    }
+
+    async function checkTracking(value) {
+        Homey.emit("checkTracking", value).then(function (result) {
+            //console.log('true 1');
+            if (result === true) {
+                Homey.emit("list_devices").then(function (result) {
+                    //console.log('true 2');
+                    Homey.nextView();
+                });
+            }
+        });
+    }
+</script>

@@ -1,0 +1,3571 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.Coderax.NorwegianServices",
+  "version": "2.18.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#e32d22",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Norwegian Public Services",
+    "no": "Norske tjenester"
+  },
+  "description": {
+    "en": "Your Buddy in Public Services 🇳🇴🎈",
+    "no": "Din kompis for offentlige tjenester 🇳🇴🎈"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [
+    "homey:manager:geolocation"
+  ],
+  "images": {
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "Coderaxxx"
+      },
+      "githubSponsors": {
+        "username": "Coderaxx"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/Coderaxx/NorwegianServicesPublic/issues"
+  },
+  "author": {
+    "name": "Jesper Grimstad"
+  },
+  "support": "mailto:nt@coderax.dev?subject=Norske%20tjenester%20-%20Homey%20app",
+  "homeyCommunityTopicId": 80126,
+  "contributors": {
+    "developers": [],
+    "translators": [
+      {
+        "name": "🇳🇴/🇬🇧 Jesper Grimstad"
+      }
+    ]
+  },
+  "homepage": "https://coderax.dev",
+  "drivers": [
+    {
+      "name": {
+        "en": "Air Quality Index",
+        "no": "Luftkvalitet"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity",
+        "measure_wind_strength",
+        "measure_wind_angle",
+        "measure_pressure",
+        "measure_rain",
+        "measure_no2",
+        "measure_pm10",
+        "measure_pm25",
+        "measure_o3"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/airquality/assets/images/small.png",
+        "large": "/drivers/airquality/assets/images/large.png",
+        "xlarge": "/drivers/airquality/assets/images/xlarge.png"
+      },
+      "icon": "/drivers/airquality/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "airquality",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Stasjonsinnstillinger",
+            "en": "Station settings"
+          },
+          "children": [
+            {
+              "id": "stationId",
+              "type": "label",
+              "label": {
+                "no": "Stasjon",
+                "en": "Station"
+              }
+            },
+            {
+              "id": "stationName",
+              "type": "label",
+              "label": {
+                "no": "Stasjonsnavn",
+                "en": "Station name"
+              }
+            },
+            {
+              "id": "stationCoords",
+              "type": "label",
+              "label": {
+                "no": "Stasjonens koordinater",
+                "en": "Station coordinates"
+              }
+            },
+            {
+              "id": "stationElevation",
+              "type": "label",
+              "label": {
+                "no": "Stasjonens høyde over havet",
+                "en": "Station elevation"
+              }
+            },
+            {
+              "id": "stationArea",
+              "type": "label",
+              "label": {
+                "no": "Stasjonens område",
+                "en": "Station area"
+              }
+            },
+            {
+              "id": "stationCounty",
+              "type": "label",
+              "label": {
+                "no": "Stasjonens kommune",
+                "en": "Station county"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Entur",
+        "en": "Entur"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_entur_bus_stop",
+        "sensor_entur_bus_line",
+        "sensor_entur_bus_dest",
+        "sensor_entur_bus_dep",
+        "sensor_entur_bus_fullText"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/entur/assets/images/small.png",
+        "large": "/drivers/entur/assets/images/large.png",
+        "xlarge": "/drivers/entur/assets/images/xlarge.png"
+      },
+      "icon": "/drivers/entur/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "repair": [
+        {
+          "id": "settings"
+        }
+      ],
+      "id": "entur",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Stasjonsinnstillinger",
+            "en": "Station settings"
+          },
+          "children": [
+            {
+              "id": "station",
+              "type": "label",
+              "label": {
+                "no": "Stasjon",
+                "en": "Station"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Avgangsinnstillinger",
+            "en": "Departure settings"
+          },
+          "children": [
+            {
+              "id": "departureText",
+              "type": "dropdown",
+              "label": {
+                "no": "Avganginformasjon",
+                "en": "Departure information"
+              },
+              "values": [
+                {
+                  "id": "departureTextStatic",
+                  "label": {
+                    "no": "Statisk",
+                    "en": "Static"
+                  }
+                },
+                {
+                  "id": "departureTextRotate",
+                  "label": {
+                    "no": "Roterende",
+                    "en": "Rotating"
+                  }
+                },
+                {
+                  "id": "departureTextSlide",
+                  "label": {
+                    "no": "Skyvende",
+                    "en": "Sliding"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "timeToWalk",
+              "type": "number",
+              "label": {
+                "no": "Slingringsmonn",
+                "en": "Slack"
+              },
+              "hint": {
+                "no": "Legg inn tiden det tar å gå hjemmefra til stasjonen.",
+                "en": "Enter the time it takes to walk from home to the station."
+              },
+              "value": 0,
+              "min": 0,
+              "max": 120,
+              "units": {
+                "no": "minutter",
+                "en": "minutes"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Ruteinnstillinger (Endre under \"Reparer\")",
+            "en": "Route settings (Change under \"Repair\")"
+          },
+          "children": [
+            {
+              "id": "routeInfo",
+              "type": "label",
+              "label": {
+                "no": "INFO",
+                "en": "INFO"
+              },
+              "value": "For å filtrere ruter, må du trykke på 'Reparer' knappen til enheten."
+            },
+            {
+              "id": "routeFilter",
+              "type": "label",
+              "label": {
+                "no": "Rutefilter",
+                "en": "Route filter"
+              },
+              "value": "[]"
+            },
+            {
+              "id": "dirFilter",
+              "type": "label",
+              "label": {
+                "no": "Retningsfilter",
+                "en": "Direction filter"
+              },
+              "value": "[]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Fuel Prices",
+        "no": "Drivstoffpris"
+      },
+      "deprecated": true,
+      "class": "sensor",
+      "capabilities": [
+        "sensor_fuelprices_stationName",
+        "meter_fuelprices_gasPrice95",
+        "meter_fuelprices_gasPrice98",
+        "meter_fuelprices_dieselPrice",
+        "meter_fuelprices_coloredDieselPrice",
+        "sensor_fuelprices_lastUpdate"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/fuelprices/assets/images/small.png",
+        "large": "/drivers/fuelprices/assets/images/large.png"
+      },
+      "icon": "/drivers/fuelprices/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "fuelprices",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Rabatt-innstillinger",
+            "en": "Discount settings"
+          },
+          "children": [
+            {
+              "id": "365PrivatDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "365 Privat",
+                "en": "365 Privat"
+              },
+              "hint": {
+                "no": "3.65% rabatt hos Esso + 34 øre i rabatt per liter hos Esso. \r\nGir 2% drivstoffrabatt på alle andre stasjoner.",
+                "en": "3.65% discount at Esso + 34 øre discount per liter at Esso. \r\nGives 2% fuel discount at all other stations."
+              }
+            },
+            {
+              "id": "coopDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Coop Medlem",
+                "en": "Coop Medlem"
+              },
+              "hint": {
+                "no": "45øre/liter i rabatt på betjente Circle K-stasjoner. \r\n25øre/l i rabatt Circle K Automat.\r\n45øre/l i rabatt hos Best-stasjoner.",
+                "en": "45øre/l discount at manned Circle K stations. \r\n25øre/l discount at Circle K Automat.\r\n45øre/l discount at Best stations."
+              }
+            },
+            {
+              "id": "trumfDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Trumf",
+                "en": "Trumf"
+              },
+              "hint": {
+                "no": "30øre/l i rabatt hos betjente Shell-stasjoner.",
+                "en": "30øre/l discount at manned Shell stations."
+              }
+            },
+            {
+              "id": "tankenDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Tankenkortet",
+                "en": "Tanken-card"
+              },
+              "hint": {
+                "no": "50øre/l i rabatt på Tanken-stasjoner. \r\n45øre/l i rabatt på alle Esso-stasjoner.",
+                "en": "50øre/l discount at Tanken stations. \r\n45øre/l discount at all Esso stations."
+              }
+            },
+            {
+              "id": "yxVisaDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "YX Visa",
+                "en": "YX Visa"
+              },
+              "hint": {
+                "no": "40øre/l i rabatt på YX-stasjoner.",
+                "en": "40øre/l discount at YX stations."
+              }
+            },
+            {
+              "id": "flexiVisaDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "FlexiVisa",
+                "en": "FlexiVisa"
+              },
+              "hint": {
+                "no": "4% rabatt på drivstoff på alle stasjoner.",
+                "en": "4% discount on fuel at all stations."
+              }
+            },
+            {
+              "id": "essoMasterCardDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Esso MasterCard",
+                "en": "Esso MasterCard"
+              },
+              "hint": {
+                "no": "40øre/l i rabatt på alle Esso-stasjoner.",
+                "en": "40øre/l discount at all Esso stations."
+              }
+            },
+            {
+              "id": "shellMasterCardDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Shell MasterCard",
+                "en": "Shell MasterCard"
+              },
+              "hint": {
+                "no": "40øre/l i rabatt på alle Shell-stasjoner.",
+                "en": "40øre/l discount at all Shell stations."
+              }
+            },
+            {
+              "id": "snarveienPlussDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Shell SnarveienPLUSS",
+                "en": "Shell SnarveienPLUSS"
+              },
+              "hint": {
+                "no": "50øre/l i rabatt på bemannede Shell-stasjoner.",
+                "en": "50øre/l discount at manned Shell stations."
+              }
+            },
+            {
+              "id": "nafXtraDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "NAF Xtra",
+                "en": "NAF Xtra"
+              },
+              "hint": {
+                "no": "65øre/l i rabatt hos Circle K. \r\n45øre/l i rabatt hos Circle K Automat. \r\n65øre/l i rabatt hos Best-stasjoner.",
+                "en": "65øre/l discount at Circle K. \r\n45øre/l discount at Circle K Automat. \r\n65øre/l discount at Best stations."
+              }
+            },
+            {
+              "id": "nafMedlemDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "NAF Medlem",
+                "en": "NAF Medlem"
+              },
+              "hint": {
+                "no": "45øre/l i rabatt hos Circle K. \r\n25øre/l i rabatt hos Circle K Automat. \r\n45øre/l i rabatt hos Best-stasjoner.",
+                "en": "45øre/l discount at Circle K. \r\n25øre/l discount at Circle K Automat. \r\n45øre/l discount at Best stations."
+              }
+            },
+            {
+              "id": "dnbMasterCardDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "DNB MasterCard",
+                "en": "DNB MasterCard"
+              },
+              "hint": {
+                "no": "3% rabatt på drivstoff på alle stasjoner med Ung, Pluss eller DNB MasterCard.",
+                "en": "3% discount on fuel at all stations with Ung, Pluss or DNB MasterCard."
+              }
+            },
+            {
+              "id": "dnbMasterCardSagaDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "DNB MasterCard SAGA/PB",
+                "en": "DNB MasterCard SAGA/PB"
+              },
+              "hint": {
+                "no": "4% rabatt på drivstoff på alle stasjoner med SAGA eller Private Banking MasterCard.",
+                "en": "4% discount on fuel at all stations with SAGA or Private Banking MasterCard."
+              }
+            },
+            {
+              "id": "circleKExtraMasterCardDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Circle K EXTRA MasterCard",
+                "en": "Circle K EXTRA MasterCard"
+              },
+              "hint": {
+                "no": "20øre/l i rabatt på Circle K Automat-stasjoner. \r\n40øre/l i rabatt på bemannede Circle K-stasjoner. \r\n40øre/l i rabatt på Best-stasjoner.",
+                "en": "20øre/l discount at Circle K Automat stations. \r\n40øre/l discount at manned Circle K stations. \r\n40øre/l discount at Best stations."
+              }
+            },
+            {
+              "id": "drivEnergiDiscount",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "DRIVenergi",
+                "en": "DRIVenergi"
+              },
+              "hint": {
+                "no": "40øre/l i rabatt på Driv-stasjoner.",
+                "en": "40øre/l discount at Driv stations."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Lightning alert",
+        "no": "Lynvarsel"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_lightning_warning",
+        "sensor_lightning_peakCurrent",
+        "sensor_lightning_distance",
+        "sensor_lightning_location",
+        "sensor_lightning_timestamp"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/lightning-alert/assets/images/small.png",
+        "large": "/drivers/lightning-alert/assets/images/large.png",
+        "xlarge": "/drivers/lightning-alert/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "lightning-alert",
+      "settings": [
+        {
+          "id": "dangerRadius",
+          "type": "number",
+          "value": 10,
+          "label": {
+            "en": "Danger Radius",
+            "no": "Fare Radius"
+          },
+          "hint": {
+            "en": "Radius in kilometers to warn about lightning strikes near your location",
+            "no": "Radius i kilometer for å varsle om lynnedslag i nærheten av din lokasjon"
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Flaggdager",
+        "en": "Norwegian Flagdays"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_flagg",
+        "meter_flagg_sensor"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/norwegianflagdays/assets/images/small.png",
+        "large": "/drivers/norwegianflagdays/assets/images/large.png"
+      },
+      "icon": "/drivers/norwegianflagdays/assets/icon.svg",
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "id": "norwegianflagdays",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Dagtypefilter",
+            "en": "Day type filter"
+          },
+          "children": [
+            {
+              "id": "dayTypeHoliday",
+              "type": "checkbox",
+              "label": {
+                "no": "Helligdager",
+                "en": "Holidays"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeAnniversary",
+              "type": "checkbox",
+              "label": {
+                "no": "Merkedager",
+                "en": "Anniversaries"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeFlagDay",
+              "type": "checkbox",
+              "label": {
+                "no": "Flaggdager",
+                "en": "Flag days"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeOther",
+              "type": "checkbox",
+              "label": {
+                "no": "Andre dager",
+                "en": "Other days"
+              },
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Pollenvarsel",
+        "en": "Pollen forecast"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_pollen_alder",
+        "sensor_pollen_birch",
+        "sensor_pollen_grass",
+        "sensor_pollen_hazel",
+        "sensor_pollen_mugwort",
+        "sensor_pollen_willow",
+        "sensor_timestamp"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/pollenforecast/assets/images/small.png",
+        "large": "/drivers/pollenforecast/assets/images/large.png"
+      },
+      "icon": "/drivers/pollenforecast/assets/icon.svg",
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "id": "pollenforecast",
+      "settings": [
+        {
+          "id": "region",
+          "type": "dropdown",
+          "value": "",
+          "label": {
+            "en": "County",
+            "no": "Fylke"
+          },
+          "values": [
+            {
+              "id": "akershus",
+              "label": "Akershus"
+            },
+            {
+              "id": "agder",
+              "label": "Agder"
+            },
+            {
+              "id": "buskerud",
+              "label": "Buskerud"
+            },
+            {
+              "id": "finnmark",
+              "label": "Finnmark"
+            },
+            {
+              "id": "innlandet",
+              "label": "Innlandet"
+            },
+            {
+              "id": "møre og romsdal",
+              "label": "Møre og Romsdal"
+            },
+            {
+              "id": "nordland",
+              "label": "Nordland"
+            },
+            {
+              "id": "oslo",
+              "label": "Oslo"
+            },
+            {
+              "id": "rogaland",
+              "label": "Rogaland"
+            },
+            {
+              "id": "telemark",
+              "label": "Telemark"
+            },
+            {
+              "id": "troms",
+              "label": "Troms"
+            },
+            {
+              "id": "trøndelag",
+              "label": "Trøndelag"
+            },
+            {
+              "id": "vestfold",
+              "label": "Vestfold"
+            },
+            {
+              "id": "vestland",
+              "label": "Vestland"
+            },
+            {
+              "id": "østfold",
+              "label": "Østfold"
+            }
+          ],
+          "hint": {
+            "en": "This is your county. If it does not match, you can change it.",
+            "no": "Dette er ditt fylke. Dersom det ikke stemmer, kan du endre det over."
+          }
+        },
+        {
+          "id": "displayType",
+          "type": "dropdown",
+          "value": "text",
+          "label": {
+            "en": "Display type",
+            "no": "Visningstype"
+          },
+          "values": [
+            {
+              "id": "text",
+              "label": {
+                "en": "Text",
+                "no": "Tekst"
+              }
+            },
+            {
+              "id": "number",
+              "label": {
+                "en": "Number",
+                "no": "Tall"
+              }
+            }
+          ],
+          "hint": {
+            "en": "This determines whether data is presented as text or number.",
+            "no": "Dette bestemmer om du ønsker dataen presentert som tekst eller tall."
+          }
+        },
+        {
+          "id": "dataType",
+          "type": "dropdown",
+          "value": "extended",
+          "label": {
+            "en": "Data type",
+            "no": "Data type"
+          },
+          "values": [
+            {
+              "id": "simple",
+              "label": {
+                "en": "Simple",
+                "no": "Enkel"
+              }
+            },
+            {
+              "id": "extended",
+              "label": {
+                "en": "Extended",
+                "no": "Utvidet"
+              }
+            }
+          ],
+          "hint": {
+            "en": "This determines whether data is presented as simple or extended.",
+            "no": "Dette bestemmer om du ønsker dataen presentert som enkel eller utvidet. Enkelt datasett inneholder samlet pollenoversikt per kategori, og utvidet inneholder pollenoversikt per art."
+          }
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Norwegian Post",
+        "no": "Posten"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "posten_sensor",
+        "meter_posten_sensor"
+      ],
+      "uiComponent": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/posten/assets/images/small.png",
+        "large": "/drivers/posten/assets/images/large.png"
+      },
+      "icon": "/drivers/posten/assets/icon.svg",
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "posten",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Posten innstillinger",
+            "en": "Postal settings"
+          },
+          "children": [
+            {
+              "id": "postnr",
+              "type": "text",
+              "label": {
+                "no": "Postnummer",
+                "en": "Postal code"
+              }
+            },
+            {
+              "id": "pollInterval",
+              "type": "number",
+              "label": {
+                "no": "Oppdateringsfrekvens",
+                "en": "Update frequency"
+              },
+              "hint": {
+                "no": "Sekunder",
+                "en": "Seconds"
+              },
+              "value": 3600,
+              "min": 60,
+              "max": 43200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Posten/Bring Sporing",
+        "en": "Posten/Bring Parcel Tracking"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_tracking_sender",
+        "sensor_tracking"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/posten-tracking/assets/images/small.png",
+        "large": "/drivers/posten-tracking/assets/images/large.png",
+        "xlarge": "/drivers/posten-tracking/assets/images/xlarge.png"
+      },
+      "icon": "/drivers/posten-tracking/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "id": "posten-tracking",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Sporingsinnstillinger",
+            "en": "Tracking settings"
+          },
+          "children": [
+            {
+              "id": "trackingNumber",
+              "type": "text",
+              "label": {
+                "no": "Sporingsnummer",
+                "en": "Tracking number"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "PostNord Sporing",
+        "en": "PostNord Tracking"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_PostNord.sender",
+        "sensor_PostNord.info"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/postnord/assets/images/small.png",
+        "large": "/drivers/postnord/assets/images/large.png"
+      },
+      "icon": "/drivers/postnord/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "id": "postnord",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Sporingsinnstillinger",
+            "en": "Tracking settings"
+          },
+          "children": [
+            {
+              "id": "trackingNumber",
+              "type": "text",
+              "label": {
+                "no": "Sporingsnummer",
+                "en": "Tracking number"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Waste collection",
+        "no": "Renovasjon"
+      },
+      "deprecated": true,
+      "class": "sensor",
+      "capabilities": [
+        "measure_next_waste_days_left"
+      ],
+      "uiComponent": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/renovasjon/assets/images/small.png",
+        "large": "/drivers/renovasjon/assets/images/large.png"
+      },
+      "icon": "/drivers/renovasjon/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start",
+          "navigation": {
+            "next": "loadingData"
+          }
+        },
+        {
+          "id": "loadingData"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices",
+            "prev": "start"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "renovasjon",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Adresse innstillinger",
+            "en": "Address settings"
+          },
+          "children": [
+            {
+              "id": "streetName",
+              "type": "label",
+              "label": {
+                "no": "Gatenavn",
+                "en": "Street name"
+              }
+            },
+            {
+              "id": "houseNumber",
+              "type": "label",
+              "label": {
+                "no": "Husnummer",
+                "en": "House number"
+              }
+            },
+            {
+              "id": "postCode",
+              "type": "label",
+              "label": {
+                "no": "Postnummer",
+                "en": "Postal code"
+              }
+            },
+            {
+              "id": "countyId",
+              "type": "label",
+              "label": {
+                "no": "Kommunenr",
+                "en": "County ID"
+              }
+            },
+            {
+              "id": "addressCode",
+              "type": "label",
+              "label": {
+                "no": "Adressekode",
+                "en": "Address code"
+              }
+            },
+            {
+              "id": "provider",
+              "type": "label",
+              "label": {
+                "no": "Leverandør",
+                "en": "Service provider"
+              }
+            },
+            {
+              "id": "addressID",
+              "type": "label",
+              "label": {
+                "no": "AdresseID hos din leverandør",
+                "en": "AddressID with your provider"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Avfallsinnstillinger",
+            "en": "Waste settings"
+          },
+          "children": [
+            {
+              "id": "wasteTypeGeneral",
+              "type": "checkbox",
+              "label": {
+                "no": "Restavfall",
+                "en": "General waste"
+              }
+            },
+            {
+              "id": "wasteTypeGeneral",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Restavfall",
+                "en": "General waste"
+              }
+            },
+            {
+              "id": "wasteTypePaper",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Papp/papiravffall",
+                "en": "Paper waste"
+              }
+            },
+            {
+              "id": "wasteTypeBio",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Matavfall",
+                "en": "Bio waste"
+              }
+            },
+            {
+              "id": "wasteTypePlastic",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "no": "Plastavfall",
+                "en": "Plastic waste"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Waste collection",
+        "no": "Renovasjon"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_next_waste_days_left"
+      ],
+      "uiComponent": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/renovation/assets/images/small.png",
+        "large": "/drivers/renovation/assets/images/large.png"
+      },
+      "icon": "/drivers/renovation/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices",
+            "prev": "start"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "renovation",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Avfallskalender API",
+            "en": "Waste calendar API"
+          },
+          "children": [
+            {
+              "id": "apiVersion",
+              "type": "label",
+              "value": "1.0.0",
+              "label": {
+                "no": "API versjon",
+                "en": "API version"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Adresse innstillinger",
+            "en": "Address settings"
+          },
+          "children": [
+            {
+              "id": "address",
+              "type": "label",
+              "value": "-",
+              "label": {
+                "no": "Adresse",
+                "en": "Address"
+              }
+            },
+            {
+              "id": "provider",
+              "type": "label",
+              "value": "-",
+              "label": {
+                "no": "Leverandør",
+                "en": "Service provider"
+              }
+            },
+            {
+              "id": "addressID",
+              "type": "label",
+              "value": "-",
+              "label": {
+                "no": "AdresseID hos leverandør",
+                "en": "AddressID with your provider"
+              }
+            },
+            {
+              "id": "countyId",
+              "type": "label",
+              "value": "-",
+              "label": {
+                "no": "Kommunenr",
+                "en": "County ID"
+              }
+            },
+            {
+              "id": "addressCode",
+              "type": "label",
+              "value": "-",
+              "label": {
+                "no": "Adressekode",
+                "en": "Address code"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Flow innstillinger [BETA]",
+            "en": "Flow settings [BETA]"
+          },
+          "children": [
+            {
+              "id": "flowTime",
+              "type": "text",
+              "value": "20:00",
+              "label": {
+                "no": "Når skal flowen kjøres? (time)",
+                "en": "When should the flow run? (hour)"
+              },
+              "hint": {
+                "no": "Format: HH:MM",
+                "en": "Format: HH:MM"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "no": "Avfallsinnstillinger",
+            "en": "Waste settings"
+          },
+          "children": [
+            {
+              "id": "waste_general",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Restavfall",
+                "en": "General waste"
+              }
+            },
+            {
+              "id": "waste_paper",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Papp/papiravfall",
+                "en": "Paper waste"
+              }
+            },
+            {
+              "id": "waste_plastic",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Plastavfall",
+                "en": "Plastic waste"
+              }
+            },
+            {
+              "id": "waste_bio",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Matavfall",
+                "en": "Bio waste"
+              }
+            },
+            {
+              "id": "waste_glass",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Glass/metallavfall",
+                "en": "Glass/metal waste"
+              }
+            },
+            {
+              "id": "waste_garden",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Hageavfall",
+                "en": "Garden waste"
+              }
+            },
+            {
+              "id": "waste_christmastree",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Juletre",
+                "en": "Christmas tree"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Valutakurs",
+        "en": "Currency exchange rate"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "meter_exchangerates_eur",
+        "meter_exchangerates_usd",
+        "meter_exchangerates_gbp",
+        "meter_exchangerates_dkk",
+        "meter_exchangerates_sek",
+        "meter_exchangerates_php"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/valutakurs/assets/images/small.png",
+        "large": "/drivers/valutakurs/assets/images/large.png"
+      },
+      "icon": "/drivers/valutakurs/assets/icon.svg",
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "valutakurs",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Valuta innstillinger",
+            "en": "Currency settings"
+          },
+          "children": [
+            {
+              "id": "eur",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis EUR",
+                "en": "Show EUR"
+              }
+            },
+            {
+              "id": "usd",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis USD",
+                "en": "Show USD"
+              }
+            },
+            {
+              "id": "gbp",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis GBP",
+                "en": "Show GBP"
+              }
+            },
+            {
+              "id": "dkk",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis DKK",
+                "en": "Show DKK"
+              }
+            },
+            {
+              "id": "sek",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis SEK",
+                "en": "Show SEK"
+              }
+            },
+            {
+              "id": "php",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "no": "Vis PHP",
+                "en": "Show PHP"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "no": "Badetemperatur",
+        "en": "Water temperature"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_watertemp_location",
+        "measure_temperature",
+        "sensor_watertemp_lastUpdate"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/water-temperature/assets/images/small.png",
+        "large": "/drivers/water-temperature/assets/images/large.png"
+      },
+      "icon": "/drivers/water-temperature/assets/icon.svg",
+      "pair": [
+        {
+          "id": "start"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 0
+        }
+      },
+      "id": "water-temperature",
+      "settings": [
+        {
+          "id": "bathingspot",
+          "type": "label",
+          "label": {
+            "no": "Badeplassens ID",
+            "en": "Bathing spot ID"
+          },
+          "value": "-",
+          "hint": {
+            "no": "Badeplassens ID",
+            "en": "Bathing spot ID"
+          }
+        }
+      ]
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "depTrigger",
+        "title": {
+          "no": "Linje går om",
+          "en": "Line leaves in"
+        },
+        "titleFormatted": {
+          "no": "Linje [[lineName]] går om [[depTime]] minutter",
+          "en": "Line [[lineName]] leaves in [[depTime]] minutes"
+        },
+        "hint": {
+          "no": "Dette kortet vil trigge når en linje går om et gitt antall minutter",
+          "en": "This card will trigger when a line leaves in a given number of minutes"
+        },
+        "tokens": [
+          {
+            "name": "stationName",
+            "type": "string",
+            "title": {
+              "no": "Stasjon",
+              "en": "Station"
+            },
+            "example": {
+              "no": "Majorstuen",
+              "en": "Majorstuen"
+            }
+          },
+          {
+            "name": "lineName",
+            "type": "string",
+            "title": {
+              "no": "Rute/linje",
+              "en": "Route/line"
+            },
+            "example": {
+              "no": "31",
+              "en": "31"
+            }
+          },
+          {
+            "name": "depTime",
+            "type": "number",
+            "title": {
+              "no": "Avgangstid",
+              "en": "Departure time"
+            },
+            "example": {
+              "no": "10",
+              "en": "10"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=entur"
+          },
+          {
+            "type": "autocomplete",
+            "name": "lineName",
+            "title": {
+              "no": "Rute/linje",
+              "en": "Route/line"
+            },
+            "placeholder": {
+              "no": "Eks. 31",
+              "en": "Ex. 31"
+            }
+          },
+          {
+            "type": "number",
+            "name": "depTime",
+            "title": {
+              "no": "Avgangstid",
+              "en": "Departure time"
+            },
+            "placeholder": {
+              "no": "Eks. 10",
+              "en": "Ex. 10"
+            }
+          }
+        ]
+      },
+      {
+        "id": "meter_fuelprices_dieselPrice_changed",
+        "title": {
+          "no": "Dieselprisen ble endret",
+          "en": "Diesel price changed"
+        },
+        "tokens": [
+          {
+            "name": "meter_fuelprices_dieselPrice",
+            "type": "number",
+            "title": {
+              "no": "Dieselpris",
+              "en": "Diesel price"
+            },
+            "example": 19.5
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fuelprices"
+          }
+        ]
+      },
+      {
+        "id": "meter_fuelprices_gasPrice95_changed",
+        "title": {
+          "no": "Bensinprisen (95 blyfri) ble endret",
+          "en": "Gasoline price (95 unleaded) changed"
+        },
+        "tokens": [
+          {
+            "name": "meter_fuelprices_gasPrice95",
+            "type": "number",
+            "title": {
+              "no": "Bensinpris (95 blyfri)",
+              "en": "Gasoline price (95 unleaded)"
+            },
+            "example": 23.76
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fuelprices"
+          }
+        ]
+      },
+      {
+        "id": "meter_fuelprices_gasPrice98_changed",
+        "title": {
+          "no": "Bensinprisen (98 blyfri) ble endret",
+          "en": "Gasoline price (98 unleaded) changed"
+        },
+        "tokens": [
+          {
+            "name": "meter_fuelprices_gasPrice98",
+            "type": "number",
+            "title": {
+              "no": "Bensinpris (98 blyfri)",
+              "en": "Gasoline price (98 unleaded)"
+            },
+            "example": 24.76
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fuelprices"
+          }
+        ]
+      },
+      {
+        "id": "lightningRegistererd",
+        "title": {
+          "no": "Lynnedslag registrert",
+          "en": "Lightning registered"
+        },
+        "hint": {
+          "no": "Dette kortet trigges ved at et Lynnedslag er registrert i nærheten av din lokasjon.",
+          "en": "This card is triggered when a lightning is registered near your location."
+        },
+        "tokens": [
+          {
+            "name": "timestamp",
+            "type": "string",
+            "title": {
+              "no": "Tidspunkt",
+              "en": "Timestamp"
+            },
+            "example": {
+              "no": "2019-01-01T00:00:00",
+              "en": "2019-01-01T00:00:00"
+            }
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "title": {
+              "no": "Lokasjon",
+              "en": "Location"
+            },
+            "example": {
+              "no": "Oslo",
+              "en": "Oslo"
+            }
+          },
+          {
+            "name": "coordinates",
+            "type": "string",
+            "title": {
+              "no": "Lynkoordinater",
+              "en": "Lightning coordinates"
+            },
+            "example": {
+              "no": "59.91273, 10.74609",
+              "en": "59.91273, 10.74609"
+            }
+          },
+          {
+            "name": "peakCurrent",
+            "type": "number",
+            "title": {
+              "no": "Høyeste strøm",
+              "en": "Peak current"
+            },
+            "example": 100
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lightning-alert"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_alder_changed",
+        "title": {
+          "no": "Or endret",
+          "en": "Alder changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_alder",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_birch_changed",
+        "title": {
+          "no": "Bjørk endret",
+          "en": "Birch changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_birch",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_hazel_changed",
+        "title": {
+          "no": "Hassel endret",
+          "en": "Hazel changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_hazel",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_mugwort_changed",
+        "title": {
+          "no": "Burot endret",
+          "en": "Mugwort changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_mugwort",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_grass_changed",
+        "title": {
+          "no": "Gress endret",
+          "en": "Grass changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_grass",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_tree_changed",
+        "title": {
+          "no": "Trær endret",
+          "en": "Tree changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_tree",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "sensor_pollen_weed_changed",
+        "title": {
+          "no": "Ugress endret",
+          "en": "Weeds changed"
+        },
+        "tokens": [
+          {
+            "name": "sensor_pollen_weed",
+            "type": "string",
+            "title": {
+              "no": "Spredning",
+              "en": "Spread"
+            },
+            "example": {
+              "no": "5m³ / Moderat spredning",
+              "en": "5m³ / Moderate spread"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=pollenforecast"
+          }
+        ]
+      },
+      {
+        "id": "posten_sensor_changed",
+        "title": {
+          "no": "Posten ble endret",
+          "en": "Post was changed"
+        },
+        "tokens": [
+          {
+            "name": "posten_sensor",
+            "type": "string",
+            "title": {
+              "no": "Postlevering",
+              "en": "Post delivery"
+            },
+            "example": {
+              "no": "I morgen",
+              "en": "Tomorrow"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=posten"
+          }
+        ]
+      },
+      {
+        "id": "newShipmentEvent",
+        "title": {
+          "no": "Ny sporingsinformasjon",
+          "en": "New tracking info"
+        },
+        "tokens": [
+          {
+            "name": "trackingSender",
+            "type": "string",
+            "title": {
+              "no": "Avsender",
+              "en": "Sender"
+            },
+            "example": {
+              "no": "Komplett",
+              "en": "Komplett"
+            }
+          },
+          {
+            "name": "trackingEvent",
+            "type": "string",
+            "title": {
+              "no": "Pakkestatus",
+              "en": "Shipment status"
+            },
+            "example": {
+              "no": "Sendingen er innlevert terminal og videresendt.",
+              "en": "The shipment has been delivered to the terminal and forwarded."
+            }
+          },
+          {
+            "name": "trackingNumber",
+            "type": "string",
+            "title": {
+              "no": "Sporingsnummer",
+              "en": "Tracking number"
+            },
+            "example": {
+              "no": "123456789",
+              "en": "123456789"
+            }
+          },
+          {
+            "name": "trackingDate",
+            "type": "string",
+            "title": {
+              "no": "Dato",
+              "en": "Date"
+            },
+            "example": {
+              "no": "14.06.2023",
+              "en": "14.06.2023"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=posten-tracking"
+          }
+        ]
+      },
+      {
+        "id": "newPostNordInfo",
+        "title": {
+          "no": "Ny sporingsinformasjon",
+          "en": "New tracking info"
+        },
+        "tokens": [
+          {
+            "name": "trackingSender",
+            "type": "string",
+            "title": {
+              "no": "Avsender",
+              "en": "Sender"
+            },
+            "example": {
+              "no": "Komplett",
+              "en": "Komplett"
+            }
+          },
+          {
+            "name": "trackingEvent",
+            "type": "string",
+            "title": {
+              "no": "Pakkestatus",
+              "en": "Shipment status"
+            },
+            "example": {
+              "no": "Sendingen er innlevert terminal og videresendt.",
+              "en": "The shipment has been delivered to the terminal and forwarded."
+            }
+          },
+          {
+            "name": "trackingNumber",
+            "type": "string",
+            "title": {
+              "no": "Sporingsnummer",
+              "en": "Tracking number"
+            },
+            "example": {
+              "no": "123456789",
+              "en": "123456789"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=postnord"
+          }
+        ]
+      },
+      {
+        "id": "wastePickupTomorrow",
+        "title": {
+          "no": "Søppel hentes i morgen",
+          "en": "Waste is picked up tomorrow"
+        },
+        "hint": {
+          "no": "Dette kortet trigges når søppel hentes i morgen. Kortet trigges på det tidspunktet du har satt i innstillingene.",
+          "en": "This card is triggered when waste is picked up tomorrow. The card is triggered at the time you have set in the settings."
+        },
+        "tokens": [
+          {
+            "name": "wasteType",
+            "type": "string",
+            "title": {
+              "no": "Søppeltype",
+              "en": "Waste type"
+            },
+            "example": {
+              "no": "Restavfall",
+              "en": "General waste"
+            }
+          },
+          {
+            "name": "wasteDate",
+            "type": "string",
+            "title": {
+              "no": "Dato",
+              "en": "Date"
+            },
+            "example": {
+              "no": "17.05.2023",
+              "en": "17.05.2023"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=renovation"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "isFlagday",
+        "title": {
+          "en": "It is !{{|not}} flag day",
+          "no": "Det er !{{|ikke}} flaggdag"
+        },
+        "titleFormatted": {
+          "en": "It is !{{|not}} flag day [[when]]",
+          "no": "Det er !{{|ikke}} flaggdag [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=norwegianflagdays"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "today",
+                "label": {
+                  "en": "today",
+                  "no": "i dag"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "en": "tomorrow",
+                  "no": "i morgen"
+                }
+              },
+              {
+                "id": "in2days",
+                "label": {
+                  "en": "in 2 days",
+                  "no": "om 2 dager"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isFlagdayWhen",
+        "title": {
+          "en": "It is !{{|not}} (flag day) (when)",
+          "no": "Det er !{{|ikke}} (flaggdag) (når)"
+        },
+        "titleFormatted": {
+          "en": "It is !{{|not}} [[droptoken]] [[when]]",
+          "no": "Det er !{{|ikke}} [[droptoken]] [[when]]"
+        },
+        "droptoken": [
+          "string"
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=norwegianflagdays"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "today",
+                "label": {
+                  "en": "today",
+                  "no": "i dag"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "en": "tomorrow",
+                  "no": "i morgen"
+                }
+              },
+              {
+                "id": "in2days",
+                "label": {
+                  "en": "in 2 days",
+                  "no": "om 2 dager"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isMarkedDay",
+        "title": {
+          "en": "It is !{{|not}} marked day",
+          "no": "Det er !{{|ikke}} merkedag"
+        },
+        "titleFormatted": {
+          "en": "It is !{{|not}} marked day [[when]]",
+          "no": "Det er !{{|ikke}} merkedag [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=norwegianflagdays"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "today",
+                "label": {
+                  "en": "today",
+                  "no": "i dag"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "en": "tomorrow",
+                  "no": "i morgen"
+                }
+              },
+              {
+                "id": "in2days",
+                "label": {
+                  "en": "in 2 days",
+                  "no": "om 2 dager"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isPost",
+        "title": {
+          "no": "Posten leverer !{{i dag|ikke i dag}}",
+          "en": "The postman !{{delivers|doesn't deliver}} today"
+        },
+        "titleFormatted": {
+          "no": "Posten leverer !{{|ikke}} [[when]]",
+          "en": "The postman !{{delivers|doesn't deliver}} [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=posten"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "postToday",
+                "label": {
+                  "no": "i dag",
+                  "en": "today"
+                }
+              },
+              {
+                "id": "postTomorrow",
+                "label": {
+                  "no": "i morgen",
+                  "en": "tomorrow"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isWaste",
+        "title": {
+          "no": "Søppel hentes !{{|ikke}}",
+          "en": "Waste is !{{|not}} picked up"
+        },
+        "titleFormatted": {
+          "no": "Søppel hentes !{{|ikke}} [[when]]",
+          "en": "Waste is !{{|not}} picked up [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=renovasjon"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "wasteToday",
+                "label": {
+                  "no": "i dag",
+                  "en": "today"
+                }
+              },
+              {
+                "id": "wasteTomorrow",
+                "label": {
+                  "no": "i morgen",
+                  "en": "tomorrow"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isWaste_v2",
+        "title": {
+          "no": "Søppel hentes !{{|ikke}}",
+          "en": "Waste is !{{|not}} picked up"
+        },
+        "titleFormatted": {
+          "no": "Søppel hentes !{{|ikke}} [[when]]",
+          "en": "Waste is !{{|not}} picked up [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=renovation"
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "wasteToday",
+                "label": {
+                  "no": "i dag",
+                  "en": "today"
+                }
+              },
+              {
+                "id": "wasteTomorrow",
+                "label": {
+                  "no": "i morgen",
+                  "en": "tomorrow"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "isSpecificWaste",
+        "title": {
+          "no": "Søppeltype hentes !{{|ikke}}",
+          "en": "Waste type is !{{|not}} picked up"
+        },
+        "titleFormatted": {
+          "no": "[[type]] hentes !{{|ikke}} [[when]]",
+          "en": "[[type]] is !{{|not}} picked up [[when]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=renovation"
+          },
+          {
+            "type": "dropdown",
+            "name": "type",
+            "values": [
+              {
+                "id": "general",
+                "label": {
+                  "no": "Restavfall",
+                  "en": "General waste"
+                }
+              },
+              {
+                "id": "paper",
+                "label": {
+                  "no": "Papiravfall",
+                  "en": "Paper waste"
+                }
+              },
+              {
+                "id": "plastic",
+                "label": {
+                  "no": "Plastavfall",
+                  "en": "Plastic waste"
+                }
+              },
+              {
+                "id": "bio",
+                "label": {
+                  "no": "Matavfall",
+                  "en": "Food waste"
+                }
+              },
+              {
+                "id": "glass",
+                "label": {
+                  "no": "Glass- og metallemballasje",
+                  "en": "Glass and metal packaging"
+                }
+              },
+              {
+                "id": "garden",
+                "label": {
+                  "no": "Hageavfall",
+                  "en": "Garden waste"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "when",
+            "values": [
+              {
+                "id": "today",
+                "label": {
+                  "no": "i dag",
+                  "en": "today"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "no": "i morgen",
+                  "en": "tomorrow"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "alarm_lightning_warning": {
+      "type": "boolean",
+      "title": {
+        "no": "Fare for lyn",
+        "en": "Risk of lightning"
+      },
+      "getable": false,
+      "setable": false,
+      "icon": "/drivers/lightning-alert/assets/lightning.svg"
+    },
+    "measure_next_waste_days_left": {
+      "type": "number",
+      "title": {
+        "no": "Neste henting",
+        "en": "Next pickup"
+      },
+      "units": "dager",
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovasjon/assets/icon.svg"
+    },
+    "measure_no2": {
+      "type": "number",
+      "title": {
+        "no": "Nitrogendioksid",
+        "en": "Nitrogen dioxide"
+      },
+      "units": "µg/m3",
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/airquality/assets/measure_no2.svg"
+    },
+    "measure_o3": {
+      "type": "number",
+      "title": {
+        "no": "Ozon",
+        "en": "Ozone"
+      },
+      "units": "µg/m3",
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/airquality/assets/measure_o3.svg"
+    },
+    "measure_pm10": {
+      "type": "number",
+      "title": {
+        "no": "PM10",
+        "en": "PM10"
+      },
+      "units": "µg/m3",
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/airquality/assets/measure_pm10.svg"
+    },
+    "measure_pollen_alder": {
+      "type": "number",
+      "title": {
+        "no": "Or",
+        "en": "Alder"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/alder.svg"
+    },
+    "measure_pollen_birch": {
+      "type": "number",
+      "title": {
+        "no": "Bjørk",
+        "en": "Birch"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/birch.svg"
+    },
+    "measure_pollen_grass": {
+      "type": "number",
+      "title": {
+        "no": "Gress",
+        "en": "Grass"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/grass.svg"
+    },
+    "measure_pollen_hazel": {
+      "type": "number",
+      "title": {
+        "no": "Hassel",
+        "en": "Hazel"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/hazel.svg"
+    },
+    "measure_pollen_mugwort": {
+      "type": "number",
+      "title": {
+        "no": "Burot",
+        "en": "Mugwort"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/mugwort.svg"
+    },
+    "measure_pollen_tree": {
+      "type": "number",
+      "title": {
+        "no": "Trær",
+        "en": "Tree"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/tree.svg"
+    },
+    "measure_pollen_weed": {
+      "type": "number",
+      "title": {
+        "no": "Ugress",
+        "en": "Weed"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/dandelion.svg"
+    },
+    "measure_pollen_willow": {
+      "type": "number",
+      "title": {
+        "no": "Salix",
+        "en": "Willow"
+      },
+      "units": {
+        "no": "m³",
+        "en": "m³"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 9999,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/willow.svg"
+    },
+    "meter_exchangerates_dkk": {
+      "type": "number",
+      "title": {
+        "en": "DKK",
+        "no": "DKK"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/dkk.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_exchangerates_eur": {
+      "type": "number",
+      "title": {
+        "en": "EUR",
+        "no": "EUR"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/eur.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_exchangerates_gbp": {
+      "type": "number",
+      "title": {
+        "en": "GBP",
+        "no": "GBP"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/gbp.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_exchangerates_php": {
+      "type": "number",
+      "title": {
+        "en": "PHP",
+        "no": "PHP"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/php.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_exchangerates_sek": {
+      "type": "number",
+      "title": {
+        "en": "SEK",
+        "no": "SEK"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/sek.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_exchangerates_usd": {
+      "type": "number",
+      "title": {
+        "en": "USD",
+        "no": "USD"
+      },
+      "units": "kr",
+      "decimals": 2,
+      "icon": "/drivers/valutakurs/assets/images/usd.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_flagg_sensor": {
+      "type": "number",
+      "title": {
+        "en": "Days until flag day",
+        "no": "Dager igjen til flaggdag"
+      },
+      "units": "dager",
+      "decimals": 0,
+      "icon": "/drivers/norwegianflagdays/assets/icon.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_fuelprices_coloredDieselPrice": {
+      "type": "number",
+      "title": {
+        "no": "Farget Diesel",
+        "en": "Colored Diesel"
+      },
+      "units": {
+        "no": "kr/l",
+        "en": "kr/l"
+      },
+      "decimals": 2,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "insights": true,
+      "icon": "/drivers/fuelprices/assets/images/d.svg"
+    },
+    "meter_fuelprices_dieselPrice": {
+      "type": "number",
+      "title": {
+        "no": "Diesel",
+        "en": "Diesel"
+      },
+      "units": {
+        "no": "kr/l",
+        "en": "kr/l"
+      },
+      "decimals": 2,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "insights": true,
+      "icon": "/drivers/fuelprices/assets/images/d.svg"
+    },
+    "meter_fuelprices_gasPrice95": {
+      "type": "number",
+      "title": {
+        "no": "95 Blyfri",
+        "en": "95 Unleaded"
+      },
+      "units": {
+        "no": "kr/l",
+        "en": "kr/l"
+      },
+      "decimals": 2,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "insights": true,
+      "icon": "/drivers/fuelprices/assets/images/95.svg"
+    },
+    "meter_fuelprices_gasPrice98": {
+      "type": "number",
+      "title": {
+        "no": "98 Blyfri",
+        "en": "98 Unleaded"
+      },
+      "units": {
+        "no": "kr/l",
+        "en": "kr/l"
+      },
+      "decimals": 2,
+      "step": 0.01,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "insights": true,
+      "icon": "/drivers/fuelprices/assets/images/98.svg"
+    },
+    "meter_posten_sensor": {
+      "type": "number",
+      "title": {
+        "en": "Days until delivery",
+        "no": "Tid igjen til levering"
+      },
+      "units": "dager",
+      "decimals": 0,
+      "icon": "/drivers/posten/assets/icon.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "meter_reno_sensor": {
+      "type": "number",
+      "title": {
+        "en": "Days until delivery",
+        "no": "Tid igjen til levering"
+      },
+      "units": "dager",
+      "decimals": 0,
+      "icon": "/drivers/renovasjon/assets/icon.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "posten_sensor": {
+      "type": "string",
+      "title": {
+        "no": "Postlevering",
+        "en": "Mail delivery"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/posten/assets/icon.svg"
+    },
+    "reno_sensor": {
+      "type": "string",
+      "title": {
+        "no": "FEIL!",
+        "en": "ERROR!"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovasjon/assets/icon_error.svg"
+    },
+    "sensor_entur_bus_dep": {
+      "type": "string",
+      "title": {
+        "no": "Avgang",
+        "en": "Departure"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/bus.svg"
+    },
+    "sensor_entur_bus_dest": {
+      "type": "string",
+      "title": {
+        "no": "Destinasjon",
+        "en": "Destination"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/bus.svg"
+    },
+    "sensor_entur_bus_fullText": {
+      "type": "string",
+      "title": {
+        "no": "Avgangsinformasjon",
+        "en": "Departure information"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/bus.svg"
+    },
+    "sensor_entur_bus_line": {
+      "type": "string",
+      "title": {
+        "no": "Linje",
+        "en": "Line"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/bus.svg"
+    },
+    "sensor_entur_bus_stop": {
+      "type": "string",
+      "title": {
+        "no": "Stopp/stasjon",
+        "en": "Stop place"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/bus.svg"
+    },
+    "sensor_entur_train_dep": {
+      "type": "string",
+      "title": {
+        "no": "Avgang",
+        "en": "Departure"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/train.svg"
+    },
+    "sensor_entur_train_dest": {
+      "type": "string",
+      "title": {
+        "no": "Destinasjon",
+        "en": "Destination"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/train.svg"
+    },
+    "sensor_entur_train_fullText": {
+      "type": "string",
+      "title": {
+        "no": "Avgangsinformasjon",
+        "en": "Departure information"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/train.svg"
+    },
+    "sensor_entur_train_line": {
+      "type": "string",
+      "title": {
+        "no": "Linje",
+        "en": "Line"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/train.svg"
+    },
+    "sensor_entur_train_stop": {
+      "type": "string",
+      "title": {
+        "no": "Stopp/stasjon",
+        "en": "Stop place"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/entur/assets/images/train.svg"
+    },
+    "sensor_flagg": {
+      "type": "string",
+      "title": {
+        "no": "Neste flaggdag",
+        "en": "Next flag day"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/norwegianflagdays/assets/icon.svg"
+    },
+    "sensor_flagg_type": {
+      "type": "string",
+      "title": {
+        "no": "Type",
+        "en": "Type"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/norwegianflagdays/assets/icon.svg"
+    },
+    "sensor_fuelprices_cheapest95Station": {
+      "type": "string",
+      "title": {
+        "no": "Billigste 95 blyfri stasjon",
+        "en": "Cheapest 95 unleaded station"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/kr.svg"
+    },
+    "sensor_fuelprices_cheapest98Station": {
+      "type": "string",
+      "title": {
+        "no": "Billigste 98 blyfri stasjon",
+        "en": "Cheapest 98 unleaded station"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/kr.svg"
+    },
+    "sensor_fuelprices_cheapestColoredDieselStation": {
+      "type": "string",
+      "title": {
+        "no": "Billigste farget Diesel stasjon",
+        "en": "Cheapest colored Diesel station"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/kr.svg"
+    },
+    "sensor_fuelprices_cheapestDieselStation": {
+      "type": "string",
+      "title": {
+        "no": "Billigste Diesel stasjon",
+        "en": "Cheapest Diesel station"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/kr.svg"
+    },
+    "sensor_fuelprices_lastUpdate": {
+      "type": "string",
+      "title": {
+        "no": "Sist oppdatert",
+        "en": "Last updated"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/updated.svg"
+    },
+    "sensor_fuelprices_stationName": {
+      "type": "string",
+      "title": {
+        "no": "Stasjon",
+        "en": "Station"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/fuelprices/assets/images/kr.svg"
+    },
+    "sensor_lightning_distance": {
+      "type": "number",
+      "title": {
+        "no": "Avstand",
+        "en": "Distance"
+      },
+      "units": {
+        "no": "km",
+        "en": "km"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "icon": "/drivers/lightning-alert/assets/distance.svg"
+    },
+    "sensor_lightning_location": {
+      "type": "string",
+      "title": {
+        "no": "Sted",
+        "en": "Location"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "icon": "/drivers/lightning-alert/assets/location.svg"
+    },
+    "sensor_lightning_peakCurrent": {
+      "type": "number",
+      "title": {
+        "no": "Høyeste strøm",
+        "en": "Peak Current"
+      },
+      "units": {
+        "no": "A",
+        "en": "A"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "icon": "/drivers/lightning-alert/assets/peakcurrent.svg"
+    },
+    "sensor_lightning_timestamp": {
+      "type": "string",
+      "title": {
+        "no": "Tidspunkt",
+        "en": "Timestamp"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "icon": "/drivers/lightning-alert/assets/timestamp.svg"
+    },
+    "sensor_pollen_alder": {
+      "type": "string",
+      "title": {
+        "no": "Or",
+        "en": "Alder"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/alder.svg"
+    },
+    "sensor_pollen_birch": {
+      "type": "string",
+      "title": {
+        "no": "Bjørk",
+        "en": "Birch"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/birch.svg"
+    },
+    "sensor_pollen_grass": {
+      "type": "string",
+      "title": {
+        "no": "Gress",
+        "en": "Grass"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/grass.svg"
+    },
+    "sensor_pollen_hazel": {
+      "type": "string",
+      "title": {
+        "no": "Hassel",
+        "en": "Hazel"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/hazel.svg"
+    },
+    "sensor_pollen_mugwort": {
+      "type": "string",
+      "title": {
+        "no": "Burot",
+        "en": "Mugwort"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/mugwort.svg"
+    },
+    "sensor_pollen_tree": {
+      "type": "string",
+      "title": {
+        "no": "Trær",
+        "en": "Tree"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/tree.svg"
+    },
+    "sensor_pollen_weed": {
+      "type": "string",
+      "title": {
+        "no": "Ugress",
+        "en": "Weeds"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/dandelion.svg"
+    },
+    "sensor_pollen_willow": {
+      "type": "string",
+      "title": {
+        "no": "Salix",
+        "en": "Willow"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/pollenforecast/assets/willow.svg"
+    },
+    "sensor_PostNord": {
+      "type": "string",
+      "title": {
+        "no": "Sporingsinformasjon",
+        "en": "Tracking information"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/postnord/assets/icon.svg"
+    },
+    "sensor_timestamp": {
+      "type": "string",
+      "title": {
+        "no": "Sist oppdatert",
+        "en": "Updated at"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "icon": "/drivers/timestamp.svg"
+    },
+    "sensor_tracking": {
+      "type": "string",
+      "title": {
+        "no": "Sporingsinformasjon",
+        "en": "Tracking information"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/posten-tracking/assets/icon.svg"
+    },
+    "sensor_tracking_sender": {
+      "type": "string",
+      "title": {
+        "no": "Avsender",
+        "en": "Sender"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/posten-tracking/assets/icon.svg"
+    },
+    "sensor_waste_bio": {
+      "type": "string",
+      "title": {
+        "no": "Matavfall",
+        "en": "Bio waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/bio.svg"
+    },
+    "sensor_waste_christmastree": {
+      "type": "string",
+      "title": {
+        "no": "Juletre",
+        "en": "Christmas tree"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/juletre.svg"
+    },
+    "sensor_waste_garden": {
+      "type": "string",
+      "title": {
+        "no": "Hageavfall",
+        "en": "Garden waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovasjon/assets/hage.svg"
+    },
+    "sensor_waste_general": {
+      "type": "string",
+      "title": {
+        "no": "Restavfall",
+        "en": "General waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/rest.svg"
+    },
+    "sensor_waste_glass": {
+      "type": "string",
+      "title": {
+        "no": "Glass/metall",
+        "en": "Glass/metal waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/glass.svg"
+    },
+    "sensor_waste_metal": {
+      "type": "string",
+      "title": {
+        "no": "Metallavfall",
+        "en": "Metal waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/rest.svg"
+    },
+    "sensor_waste_paper": {
+      "type": "string",
+      "title": {
+        "no": "Papp/Papir",
+        "en": "Paper waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/papp.svg"
+    },
+    "sensor_waste_plastic": {
+      "type": "string",
+      "title": {
+        "no": "Plastavfall",
+        "en": "Plastic waste"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/renovation/assets/plast.svg"
+    },
+    "sensor_watertemp_lastUpdate": {
+      "type": "string",
+      "title": {
+        "no": "Sist oppdatert",
+        "en": "Last updated"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/water-temperature/assets/images/updated.svg"
+    },
+    "sensor_watertemp_location": {
+      "type": "string",
+      "title": {
+        "no": "Badeplass",
+        "en": "Bathing spot"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/drivers/water-temperature/assets/images/beach.svg"
+    }
+  }
+}

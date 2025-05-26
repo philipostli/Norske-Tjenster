@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g transform="matrix(1, 0, 0, 1, -106.460388, -34.109581)">
+    <path d="m250.72 171.68c-33.48 1.7734-66.965-1.5977-100.45-15.344v96.375c33.48 13.746 66.965 17.125 100.45 15.344v-96.375z" style="fill: rgb(239, 43, 45);"/>
+    <path d="m150.27 403.67c33.48 13.746 66.965 17.125 100.45 15.344v-96.383c-33.48 1.7734-66.965-1.5977-100.45-15.344v96.383z" style="fill: rgb(239, 43, 45);"/>
+    <path d="m305.3 412.39c81.48-14.211 162.96-42.168 244.44-8.7188v-96.383c-81.48-33.453-162.96-5.4922-244.44 8.7188v96.383z" style="fill: rgb(239, 43, 45);"/>
+    <path d="m305.3 165.05v96.375c81.48-14.211 162.96-42.168 244.44-8.7188v-96.375c-81.484-33.449-162.97-5.4922-244.44 8.7188z" style="fill: rgb(239, 43, 45);"/>
+    <path d="m290.2 166.93c-8.1328 1.2227-16.262 2.2578-24.387 3.0352v112.05c-38.512 3.6914-77.027 1.6016-115.54-14.211v24.387c38.512 15.809 77.027 17.902 115.54 14.211v112.05c8.1328-0.78516 16.262-1.8125 24.387-3.0352v-112.05c86.508-12.988 173.02-46.699 259.54-11.176v-24.387c-86.512-35.516-173.03-1.8047-259.54 11.176v-112.05z" style="fill: rgb(0, 40, 104);"/>
+    <use transform="matrix(1, 0, 0, 1, 70, 644)" xlink:href="#x"/>
+    <use transform="matrix(1, 0, 0, 1, 90.55078125, 644)" xlink:href="#c"/>
+    <use transform="matrix(1, 0, 0, 1, 104.359375, 644)" xlink:href="#b"/>
+    <use transform="matrix(1, 0, 0, 1, 123.34765625, 644)" xlink:href="#e"/>
+    <use transform="matrix(1, 0, 0, 1, 142.2421875, 644)" xlink:href="#d"/>
+    <use transform="matrix(1, 0, 0, 1, 155.62890625, 644)" xlink:href="#b"/>
+    <use transform="matrix(1, 0, 0, 1, 174.6171875, 644)" xlink:href="#k"/>
+    <use transform="matrix(1, 0, 0, 1, 204.41015625, 644)" xlink:href="#j"/>
+    <use transform="matrix(1, 0, 0, 1, 224.453125, 644)" xlink:href="#i"/>
+    <use transform="matrix(1, 0, 0, 1, 252.453125, 644)" xlink:href="#h"/>
+    <use transform="matrix(1, 0, 0, 1, 280.3125, 644)" xlink:href="#e"/>
+    <use transform="matrix(1, 0, 0, 1, 299.2109375, 644)" xlink:href="#c"/>
+    <use transform="matrix(1, 0, 0, 1, 313.015625, 644)" xlink:href="#g"/>
+    <use transform="matrix(1, 0, 0, 1, 329.6171875, 644)" xlink:href="#a"/>
+    <use transform="matrix(1, 0, 0, 1, 358.6015625, 644)" xlink:href="#w"/>
+    <use transform="matrix(1, 0, 0, 1, 376.44140625, 644)" xlink:href="#f"/>
+    <use transform="matrix(1, 0, 0, 1, 386.0390625, 644)" xlink:href="#v"/>
+    <use transform="matrix(1, 0, 0, 1, 404.2890625, 644)" xlink:href="#a"/>
+    <use transform="matrix(1, 0, 0, 1, 423.52734375, 644)" xlink:href="#u"/>
+    <use transform="matrix(1, 0, 0, 1, 433.125, 644)" xlink:href="#t"/>
+    <use transform="matrix(1, 0, 0, 1, 449.7890625, 644)" xlink:href="#f"/>
+    <use transform="matrix(1, 0, 0, 1, 70, 672)" xlink:href="#s"/>
+    <use transform="matrix(1, 0, 0, 1, 82.18359375, 672)" xlink:href="#c"/>
+    <use transform="matrix(1, 0, 0, 1, 95.9921875, 672)" xlink:href="#a"/>
+    <use transform="matrix(1, 0, 0, 1, 115.2265625, 672)" xlink:href="#r"/>
+    <use transform="matrix(1, 0, 0, 1, 154.15234375, 672)" xlink:href="#d"/>
+    <use transform="matrix(1, 0, 0, 1, 167.53515625, 672)" xlink:href="#q"/>
+    <use transform="matrix(1, 0, 0, 1, 187.46875, 672)" xlink:href="#b"/>
+    <use transform="matrix(1, 0, 0, 1, 216.20703125, 672)" xlink:href="#p"/>
+    <use transform="matrix(1, 0, 0, 1, 239.640625, 672)" xlink:href="#a"/>
+    <use transform="matrix(1, 0, 0, 1, 258.87890625, 672)" xlink:href="#o"/>
+    <use transform="matrix(1, 0, 0, 1, 278.8125, 672)" xlink:href="#n"/>
+    <use transform="matrix(1, 0, 0, 1, 308.4921875, 672)" xlink:href="#m"/>
+    <use transform="matrix(1, 0, 0, 1, 329.015625, 672)" xlink:href="#c"/>
+    <use transform="matrix(1, 0, 0, 1, 342.8203125, 672)" xlink:href="#a"/>
+    <use transform="matrix(1, 0, 0, 1, 362.05859375, 672)" xlink:href="#l"/>
+    <use transform="matrix(1, 0, 0, 1, 371.65625, 672)" xlink:href="#b"/>
+    <use transform="matrix(1, 0, 0, 1, 390.6484375, 672)" xlink:href="#g"/>
+    <use transform="matrix(1, 0, 0, 1, 407.2421875, 672)" xlink:href="#d"/>
+  </g>
+</svg>

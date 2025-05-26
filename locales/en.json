@@ -1,0 +1,103 @@
+{
+    "renovation": {
+        "pair": {
+            "title": "Waste collection",
+            "desc": "Fill your address below",
+            "info": {
+                "autoAddress": "Find your address here",
+                "address": "Address",
+                "housenumber": "House number",
+                "postcode": "Postal code",
+                "county_id": "County ID",
+                "address_code": "Address code"
+            },
+            "loading": {
+                "desc": "Checking your address against various providers"
+            }
+        },
+        "tokens": {
+            "trashcollection": {
+                "today": "today",
+                "tomorrow": "tomorrow",
+                "dayaftertomorrow": "day after tomorrow"
+            }
+        },
+        "device": {
+            "tokens": {
+                "nextWasteTypes": {
+                    "title": "Waste type next collection - __fullAddress__",
+                    "value": "Loading..."
+                }
+            }
+        }
+    },
+    "posten-tracking": {
+        "pair": {
+            "title": "Norwegian Post Tracking",
+            "desc": "Enter tracking number in the field below",
+            "label": "Tracking number"
+        }
+    },
+    "PostNord": {
+        "pair": {
+            "title": "PostNord tracking",
+            "desc": "Enter tracking number in the field below",
+            "label": "Tracking number"
+        }
+    },
+    "entur": {
+        "pair": {
+            "title": "Entur station tracking",
+            "desc": "Enter station in the field below",
+            "label": "Search for station"
+        },
+        "settings": {
+            "title": "Entur settings",
+            "station": "Station",
+            "departureText": "Departure text",
+            "dirSetting": "Direction settings for station",
+            "routeSetting": "Route settings for station"
+        },
+        "device": {
+            "slideDepInfo": {
+                "depText": "Next departure from __stopName__",
+                "leavesIn": "leaves in __dep__",
+                "leavesNow": "leaves now",
+                "leavesAt": "leaves at __dep__"
+            },
+            "rotateDepInfo": {
+                "depText": "Next departure:",
+                "leavesIn": "In __dep__",
+                "leavesNow": "Now",
+                "leavesAt": "at __dep__"
+            },
+            "staticDepInfo": {
+                "depText": "Next departure:",
+                "leavesIn": "In __dep__",
+                "leavesNow": "Now",
+                "leavesAt": "at __dep__"
+            }
+        }
+    },
+    "FuelPrices": {
+        "pair": {
+            "title": "Fuel prices",
+            "desc": "Enter station in the field below",
+            "label": "Search for station"
+        }
+    },
+    "waterTemperature": {
+        "pair": {
+            "title": "Water temperature",
+            "desc": "Enter location in the field below",
+            "label": "Search for location"
+        }
+    },
+    "airQuality": {
+        "pair": {
+            "title": "Air quality",
+            "desc": "Enter location or station in the field below",
+            "label": "Search for location or station"
+        }
+    }
+}

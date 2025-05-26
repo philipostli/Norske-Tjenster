@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<header class="homey-header">
+	<h1 class="homey-title">
+		<!-- This will be filled with the translated string with key 'settings.title'. -->
+	</h1>
+	<p class="homey-subtitle">
+		<!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+	</p>
+</header>
+<fieldset class="homey-form-fieldset">
+	<div class="homey-form-group">
+		<label for="station" class="homey-form-label"><span data-i18n="airQuality.pair.label"></span></label>
+		<!--<input type="text" id="search" class="homey-input-text" placeholder="Søk etter stasjon">-->
+		<select id="search" style="width: 100%;"></select>
+	</div>
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="application/javascript">
+	Homey.setTitle(Homey.__("airQuality.pair.title"));
+	Homey.setSubtitle(Homey.__("airQuality.pair.desc"));
+	$(document).ready(function() {
+		setTimeout(function() {
+			var heleDatasettet;
+
+			$.ajax({
+				url: 'https://api.met.no/weatherapi/airqualityforecast/0.1/stations',
+				dataType: 'json'
+			}).done(async function(data) {
+				heleDatasettet = data;
+				await initialiserSelect2();
+			});
+
+			async function initialiserSelect2() {
+				$('#search').select2({
+					placeholder: 'Søk...',
+					data: heleDatasettet.map(item => ({
+						id: item.eoi,
+						text: `${item.name} - ${item.delomrade.name}, ${item.kommune.name} (${item.eoi})`,
+						station: item
+					})),
+					matcher: function(params, data) {
+						if ($.trim(params.term) === '') {
+							return data;
+						}
+						if (data.text.toLowerCase().includes(params.term.toLowerCase())) {
+							return data;
+						}
+						return null;
+					},
+				});
+
+				$('#search').on('select2:select', function(e) {
+					var selectedData = e.params.data;
+					console.log('Valgt:', JSON.stringify(e.params.data, null, 2));
+					Homey.emit('saveStation', e.params.data).then(function(result) {
+						//console.log(result);
+						if (result === true) {
+							Homey.emit('list_devices').then(function(result) {
+								//console.log(result);
+								Homey.nextView();
+							});
+						}
+					});
+				});
+			}
+		}, 1000);
+	});
+</script>

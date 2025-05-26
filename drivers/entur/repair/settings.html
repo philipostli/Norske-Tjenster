@@ -1,0 +1,299 @@
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+		integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<header class="homey-header">
+	<h1 class="homey-title" data-i18n="entur.settings.title"></h1>
+</header>
+<fieldset class="homey-form-fieldset">
+	<legend class="homey-form-legend"><span data-i18n="entur.settings.routeSetting"></span> <span id="station"></span></legend>
+	<div class="homey-form-group">
+		<label class="homey-label" for="routeFilter">Rutefilter
+			<select name="routeFilter" id="routeFilter" multiple="multiple" style="width: 100%;">
+				<!-- Will be filled with routes from the API -->
+			</select>
+		</label>
+	</div>
+</fieldset>
+<fieldset class="homey-form-fieldset">
+	<legend class="homey-form-legend"><span data-i18n="entur.settings.dirSetting"></span> <span id="station2"></span></legend>
+	<div class="homey-form-group">
+		<label class="homey-label" for="dirFilter">Retningsfilter
+			<select name="dirFilter" id="dirFilter" multiple="multiple" style="width: 100%;">
+				<!-- Will be filled with routes from the API -->
+			</select>
+		</label>
+	</div>
+</fieldset>
+<button class="homey-button-primary-full" id="saveButton">Lagre</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+	integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+	integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		var saveButton = $('#saveButton');
+		var $station = Homey.emit('station').then(function (station) {
+			$('#station').text(station);
+			$('#station2').text(station);
+			return station;
+		}).catch(function (err) {
+			return Homey.alert(err);
+		});
+
+		Homey.emit('routeFilter').then(function (routeFilter) {
+			$('#routeFilter').attr('data-selectize-value', JSON.stringify(routeFilter));
+			return routeFilter;
+		}).catch(function (err) {
+			return Homey.alert(err);
+		});
+
+		Homey.emit('dirFilter').then(function (dirFilter) {
+			$('#dirFilter').attr('data-selectize-value', JSON.stringify(dirFilter));
+			return dirFilter;
+		}).catch(function (err) {
+			return Homey.alert(err);
+		});
+
+		saveButton.on('click', function () {
+			const selectizeControl = $('#routeFilter')[0].selectize;
+			let selectedValues = selectizeControl.items;
+
+			const selectizeControl2 = $('#dirFilter')[0].selectize;
+			let selectedValues2 = selectizeControl2.items;
+
+			let filterArray = selectedValues.map(id => {
+				if (!selectizeControl.options[id]) {
+					console.error("No option found for id:", id);
+					return null;
+				}
+				return {
+					id: id,
+					text: selectizeControl.options[id].text
+				};
+			}).filter(item => item); // Filter out any null values
+
+			//console.log("Filter Array:", filterArray);
+
+			let filterArray2 = selectedValues2.map(id => {
+				if (!selectizeControl2.options[id]) {
+					console.error("No option found for id:", id);
+					return null;
+				}
+				return {
+					id: id,
+					text: selectizeControl2.options[id].text
+				};
+			}).filter(item => item); // Filter out any null values
+
+			let result = {
+				routeFilter: [],
+				dirFilter: []
+			};
+
+			filterArray.forEach(route => {
+				result.routeFilter.push({
+					id: route.id,
+					text: route.text
+				});
+			});
+
+			filterArray2.forEach(dir => {
+				result.dirFilter.push({
+					id: dir.id,
+					text: dir.text
+				});
+			});
+			console.log(result);
+
+			Homey.emit('changeSettings', result).then(function (result) {
+				return Homey.done();
+			}).catch(function (err) {
+				Homey.alert(err);
+				return Homey.done();
+			});
+		});
+	});
+
+	setTimeout(function () {
+		$(document).ready(function () {
+			$('#routeFilter').selectize({
+				plugins: ["clear_button"],
+				delimiter: ",",
+				maxItems: null,
+				valueField: "id",   // This should be your desired value from your API data
+				labelField: "text", // This should be your desired label from your API data
+				searchField: "text",
+				preload: true,
+				openOnFocus: true,
+				load: async function (query, callback) {
+					try {
+						const stopPlaceInfo = await fetchStopPlaceInfo();
+
+						// Assuming prosesserStoppStedInfo returns data in the format: 
+						// [{id: '1', text: 'Option 1'}, {id: '2', text: 'Option 2'}]
+						const results = prosesserStoppStedInfo(stopPlaceInfo);
+						callback(results);
+					} catch (error) {
+						console.error(error);
+						callback();
+					}
+				},
+				loadThrottle: 400,
+				onInitialize: function () {
+					var existingOptions = JSON.parse(this.$input.attr('data-selectize-value'));
+					var self = this;
+					if (Object.prototype.toString.call(existingOptions) === "[object Array]") {
+						existingOptions.forEach(function (existingOption) {
+							self.addOption(existingOption);
+							self.addItem(existingOption[self.settings.valueField]);
+						});
+					}
+					else if (typeof existingOptions === 'object') {
+						self.addOption(existingOptions);
+						self.addItem(existingOptions[self.settings.valueField]);
+					}
+				}
+			});
+
+			$('#dirFilter').selectize({
+				plugins: ["clear_button"],
+				delimiter: ",",
+				maxItems: null,
+				valueField: "id",   // This should be your desired value from your API data
+				labelField: "text", // This should be your desired label from your API data
+				searchField: "text",
+				preload: true,
+				openOnFocus: true,
+				load: async function (query, callback) {
+					try {
+						const stopPlaceInfo = await fetchStopPlaceInfo();
+
+						// Assuming prosesserStoppStedInfo returns data in the format: 
+						// [{id: '1', text: 'Option 1'}, {id: '2', text: 'Option 2'}]
+						const results = prosesserQuayInfo(stopPlaceInfo);
+						callback(results);
+					} catch (error) {
+						console.error(error);
+						callback();
+					}
+				},
+				loadThrottle: 400,
+				onInitialize: function () {
+					var existingOptions = JSON.parse(this.$input.attr('data-selectize-value'));
+					var self = this;
+					if (Object.prototype.toString.call(existingOptions) === "[object Array]") {
+						existingOptions.forEach(function (existingOption) {
+							self.addOption(existingOption);
+							self.addItem(existingOption[self.settings.valueField]);
+						});
+					}
+					else if (typeof existingOptions === 'object') {
+						self.addOption(existingOptions);
+						self.addItem(existingOptions[self.settings.valueField]);
+					}
+				}
+			});
+
+			function prosesserStoppStedInfo(stopPlaceInfo) {
+				const results = [];
+
+				for (const quay of stopPlaceInfo.quays) {
+					for (const line of quay.lines) {
+						if (!results.includes(line.id)) {
+							if (line.publicCode !== line.name) {
+								line.name = `[${line.publicCode}] ${line.name}`;
+							}
+							results.push({
+								id: line.id,
+								text: line.name
+							});
+						}
+					}
+				}
+				return results.sort();
+			}
+
+			function prosesserQuayInfo(stopPlaceInfo) {
+				const results = [];
+
+				for (const quay of stopPlaceInfo.quays) {
+					if (!results.includes(quay.id)) {
+						results.push({
+							id: quay.id,
+							text: `${quay.name} ${quay.publicCode ? `(${quay.publicCode})` : ''}`
+						});
+					}
+				}
+				return results.sort();
+			}
+		});
+	}, 1000);
+
+	async function fetchStopPlaceInfo() {
+		// Definer GraphQL-spørringen
+		const query = `
+            query ($id: String!) {
+                stopPlace(id: $id) {
+                    name
+                    id
+                    quays {
+                        id
+                        name
+                        publicCode
+                        stopType
+                        lines {
+                            id
+                            name
+                            publicCode
+                            transportMode
+                            transportSubmode
+                        }
+                    }
+                    estimatedCalls(arrivalDeparture: both) {
+                        quay {
+                            lines {
+                            name
+                            id
+                            publicCode
+                            transportMode
+                            transportSubmode
+                            }
+                        }
+                    }
+                }
+            }
+        `;
+		const apiUrl = 'https://api.entur.io/journey-planner/v3/graphql';
+		try {
+			const station = $('#station').text();
+			const response = await axios.post(apiUrl, {
+				query: query,
+				variables: { id: station },
+			}, {
+				headers: {
+					'Content-Type': 'application/json',
+					'ET-Client-Name': 'Coderax-NorskeTjenesterHomey',
+				}
+			});
+			//console.log("Full response:", response.data);  // Logg hele responsen for å se strukturen
+			//console.log(station);
+
+			if (response.data && response.data.data && response.data.data.stopPlace) {
+				//console.log(response.data.data.stopPlace.estimatedCalls);
+				return response.data.data.stopPlace;
+			} else {
+				console.error("No stopPlace data in the response");
+				return null;
+			}
+
+		} catch (error) {
+			console.error('Feil ved henting av data:', error);
+		} finally {
+			// Utføres alltid
+		}
+	}
+</script>

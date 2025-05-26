@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+	integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style type="text/css">
+	.img-flag {
+		filter: invert(0) !important;
+	}
+</style>
+<header class="homey-header">
+	<h1 class="homey-title">
+		<!-- This will be filled with the translated string with key 'settings.title'. -->
+	</h1>
+	<p class="homey-subtitle">
+		<!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+	</p>
+</header>
+<fieldset class="homey-form-fieldset">
+	<div class="homey-form-group">
+		<label for="gasStation" class="homey-form-label"><span data-i18n="FuelPrices.pair.label"
+				id="pairLabel"></span></label>
+		<select id="gasStation" style="width: 100%;"></select>
+		<input type="number" id="distanceInKM" class="homey-form-input" name="distanceInKM" min="1" max="100" value="10"
+			style="display: none;">
+	</div>
+	<div class="homey-form-group">
+		<button class="homey-button-primary-full" onclick="changeToCity()" id="changeToCity">Få billigste drivstoffpris
+			basert på
+			posisjon</button>
+		<button id="nextButton" class="homey-button-primary-full" onclick="goToNextStep()"
+			style="display: none;">Neste</button>
+	</div>
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+	integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="application/javascript">
+	Homey.setTitle(Homey.__('FuelPrices.pair.title'));
+	Homey.setSubtitle(Homey.__('FuelPrices.pair.desc'));
+	setTimeout(function () {
+		$(document).ready(function () {
+			$('#gasStation').select2({
+				placeholder: 'Søk...',
+				ajax: {
+					url: 'https://api.drivstoffappen.no/api/stations',
+					headers: {
+						'X-API-KEY': '1A8CAC7EA4FA0AB2EE2480E612FAA413A53735FC-I'
+					},
+					dataType: 'json',
+					delay: 400,
+					data: function (params) {
+						return {
+							text: params.term,
+							lang: 'no'
+						};
+					},
+					processResults: function (data, params) {
+						const terms = params.term ? params.term.toLowerCase().split(' ') : [];
+						const filteredData = data.filter(item => {
+							return terms.every(term =>
+								(item.name ? item.name.toLowerCase().includes(term) : false) ||
+								(item.brand ? item.brand.toLowerCase().includes(term) : false) ||
+								(item.location ? item.location.toLowerCase().includes(term) : false)
+							);
+						});
+
+						return {
+							results: filteredData.map(function (item) {
+								return {
+									text: `${item.brand} ${item.name} (${item.location})`,
+									id: item.id,
+									name: item.name,
+									brand: item.brand,
+									location: item.location,
+									latitude: item.latitude,
+									longitude: item.longitude,
+									pictureUrl: item.pictureUrl,
+									stationDetails: item.stationDetails,
+									extras: item.extras,
+								};
+							})
+						};
+					},
+					cache: true
+				},
+				templateResult: function (data) {
+					if (!data.id) {
+						return data.text;
+					}
+					var svgImg = `
+								<svg width="20" height="20">
+										<image href="${data.pictureUrl}" x="0" y="0" height="20px" width="20px"/>
+								</svg>
+                    `;
+					var $option = $(
+						`<span>${svgImg} ${data.text}</span>`
+					);
+					return $option;
+				},
+				minimumInputLength: 2
+			});
+
+			$('#gasStation').on('select2:select', function (e) {
+				var selectedData = e.params.data;
+				//console.log('Valgt:', JSON.stringify(e.params.data));
+				Homey.emit('saveGasStation', e.params.data).then(function (result) {
+					//console.log(result);
+					if (result === true) {
+						Homey.emit('list_devices').then(function (result) {
+							//console.log(result);
+							Homey.nextView();
+						});
+					}
+				});
+			});
+		});
+	}, 1000);
+
+	function changeToCity() {
+		$('#gasStation').select2('destroy');
+		document.getElementById('gasStation').style.display = 'none';
+		document.getElementById('distanceInKM').style.display = 'block';
+		document.getElementById('nextButton').style.display = 'block';
+		document.getElementById('pairLabel').innerHTML = 'Skriv inn radius i km fra din posisjon du ønsker å få opp den billigste drivstoffprisen';
+		document.getElementById('changeToCity').style.display = 'none';
+	}
+
+	function goToNextStep() {
+		const distanceInKM = document.getElementById('distanceInKM').value;
+		// Her kan du legge til logikk for å lagre distanceInKM og hente stasjoner innenfor den avstanden
+		Homey.emit('saveDistanceInKM', distanceInKM).then(function (result) {
+			if (result === true) {
+				Homey.emit('list_devices').then(function (result) {
+					//console.log(result);
+					Homey.nextView();
+				});
+			}
+		});
+	}
+
+	$('#distanceInKM').on('input', function () {
+		const value = $(this).val();
+		if (value < 1) {
+			$(this).val(1);
+		} else if (value > 100) {
+			$(this).val(100);
+		}
+	});
+
+</script>

@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<header class="homey-header">
+	<h1 class="homey-title">
+		<!-- This will be filled with the translated string with key 'settings.title'. -->
+	</h1>
+	<p class="homey-subtitle">
+		<!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+	</p>
+</header>
+<fieldset class="homey-form-fieldset">
+	<div class="homey-form-group">
+		<label for="region" class="homey-form-label"><span data-i18n="waterTemp.pair.region"></span></label>
+		<select id="region" style="width: 100%;"></select>
+	</div>
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="application/javascript">
+	Homey.setTitle(Homey.__("waterTemp.pair.title"));
+	Homey.setSubtitle(Homey.__("waterTemp.pair.desc"));
+	$(document).ready(function() {
+		setTimeout(function() {
+			var regions;
+
+			$.ajax({
+				url: 'https://www.yr.no/api/v0/regions/NO',
+				dataType: 'json',
+				headers: {
+					'User-Agent': 'Homey-Norske-tjenester/1.0',
+					'Accept': 'application/json'
+				}
+			}).done(async function(data) {
+				regions = data.regions;
+				await initialiserSelect2();
+			}).fail(function(error) {
+				console.error('Error fetching regions:', error);
+			});
+
+			async function initialiserSelect2() {
+				$('#region').select2({
+					placeholder: 'Velg region...',
+					data: regions.map(item => ({
+						id: item.id,
+						text: item.name,
+						region: item
+					})),
+					matcher: function(params, data) {
+						if ($.trim(params.term) === '') {
+							return data;
+						}
+						if (data.text.toLowerCase().includes(params.term.toLowerCase())) {
+							return data;
+						}
+						return null;
+					},
+				});
+
+				$('#region').on('select2:select', function(e) {
+					var selectedData = e.params.data;
+					console.log('Selected region:', JSON.stringify(selectedData, null, 2));
+					
+					// Get water temperatures for the selected region
+					$.ajax({
+						url: `https://www.yr.no/api/v0/regions/${selectedData.id}/watertemperatures?language=nb`,
+						dataType: 'json',
+						headers: {
+							'User-Agent': 'Homey-Norske-tjenester/1.0',
+							'Accept': 'application/json'
+						}
+					}).done(function(tempData) {
+						if (tempData && tempData.spots && tempData.spots.length > 0) {
+							const spotData = {
+								id: selectedData.id,
+								name: selectedData.text,
+								region: selectedData.text,
+								subregion: '',
+								temperature: tempData.spots[0].temperature,
+								time: tempData.spots[0].time,
+								location: {
+									position: tempData.spots[0].location.position
+								},
+								sourceDisplayName: 'yr.no'
+							};
+							
+							Homey.emit('saveBathingSpot', spotData).then(function(result) {
+								if (result === true) {
+									Homey.emit('list_devices').then(function() {
+										Homey.nextView();
+									});
+								}
+							});
+						} else {
+							console.error('No water temperature data available for this region');
+						}
+					}).fail(function(error) {
+						console.error('Error fetching water temperatures:', error);
+					});
+				});
+			}
+		}, 1000);
+	});
+</script>

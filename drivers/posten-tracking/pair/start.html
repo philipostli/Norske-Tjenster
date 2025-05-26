@@ -1,0 +1,35 @@
+<header class="homey-header">
+    <h1 class="homey-title">
+        <!-- This will be filled with the translated string with key 'settings.title'. -->
+    </h1>
+    <p class="homey-subtitle">
+        <!-- This will be filled with the translated string with key 'settings.subtitle'. -->
+    </p>
+</header>
+<fieldset class="homey-form-fieldset">
+    <div class="homey-form-group">
+        <label for="trackingNumber" class="homey-form-label"><span data-i18n="posten-tracking.pair.label"></span></label>
+        <input id="trackingNumber" class="homey-form-input" type="text" value="" oninput="callAPI()"/>
+    </div>
+</fieldset>
+<script type="application/javascript">
+    Homey.setTitle(Homey.__("posten-tracking.pair.title"));
+    Homey.setSubtitle(Homey.__("posten-tracking.pair.desc"));
+    async function callAPI() {
+        const value = {
+            "trackingNumber": document.getElementById('trackingNumber').value,
+        };
+        if (value.trackingNumber.length == 13 || value.trackingNumber.length == 17 || value.trackingNumber.length == 18) {
+            console.log(value);
+            Homey.emit("checkTracking", value).then(function (result) {
+                console.log(result);
+                if (result === true) {
+                    Homey.emit("list_devices").then(function (result) {
+                        console.log(result);
+                        Homey.nextView();
+                    });
+                }
+            });
+        }
+    }
+</script>
