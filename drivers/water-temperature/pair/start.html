@@ -52,11 +52,17 @@
 				regions = result;
 				$('#region').select2({
 					placeholder: 'Velg region...',
-					data: regions.map(item => ({
-						id: item.id,
-						text: item.name
-					}))
+					allowClear: true,
+					data: [
+						{ id: '', text: 'Velg region...' }, // Placeholder option
+						...regions.map(item => ({
+							id: item.id,
+							text: item.name
+						}))
+					]
 				});
+				// Ensure the placeholder is selected by default
+				$('#region').val('').trigger('change');
 			});
 
 			// 2. When region is selected, fetch bathing spots for that region
