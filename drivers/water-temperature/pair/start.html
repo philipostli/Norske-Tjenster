@@ -25,8 +25,8 @@
 <script type="application/javascript">
 	Homey.setTitle(Homey.__("waterTemperature.pair.title"));
 	Homey.setSubtitle(Homey.__("waterTemperature.pair.desc"));
-	$(document).ready(function () {
-		setTimeout(function () {
+	$(document).ready( async function () {
+		setTimeout(async function () {
 			let regions;
 			let coords;
 
@@ -117,18 +117,16 @@
 					id: spot.id,
 					name: spot.location.name,
 					region: spot.location.region ? spot.location.region.name : '',
+					regionId: spot.location.region ? spot.location.region.id : '',
 					subregion: spot.location.subregion ? spot.location.subregion.name : '',
 					position: spot.location.position,
 					temperature: spot.temperature,
 					time: spot.time,
 					sourceDisplayName: spot.sourceDisplayName || 'yr.no'
 				};
-				Homey.emit('saveBathingSpot', spotData).then(function (result) {
-					//if (result === true) {
-						Homey.emit('list_devices').then(function () {
-							Homey.nextView();
-						});
-					//}
+				Homey.emit('saveBathingSpot', spotData).then(async function (result) {
+				await Homey.emit('list_devices')
+
 				});
 			});
 
@@ -142,18 +140,15 @@
 					id: spot.id,
 					name: spot.location.name,
 					region: spot.location.region ? spot.location.region.name : '',
+					regionId: spot.location.region ? spot.location.region.id : '',
 					subregion: spot.location.subregion ? spot.location.subregion.name : '',
 					position: spot.position,
 					temperature: spot.temperature,
 					time: spot.time,
 					sourceDisplayName: spot.sourceDisplayName || 'yr.no'
 				};
-				Homey.emit('saveBathingSpot', spotData).then(function (result) {
-					if (result === true) {
-						Homey.emit('list_devices').then(function () {
-							Homey.nextView();
-						});
-					}
+				Homey.emit('saveBathingSpot', spotData).then(async function (result) {
+					await Homey.emit('list_devices')
 				});
 			});
 
