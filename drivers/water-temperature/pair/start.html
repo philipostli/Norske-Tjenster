@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+	integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <header class="homey-header">
 	<h1 class="homey-title">
 		<!-- This will be filled with the translated string with key 'settings.title'. -->
@@ -8,94 +10,134 @@
 	</p>
 </header>
 <fieldset class="homey-form-fieldset">
-	<div class="homey-form-group">
+	<div id="step1" class="homey-form-group">
 		<label for="region" class="homey-form-label"><span data-i18n="waterTemp.pair.region"></span></label>
 		<select id="region" style="width: 100%;"></select>
 	</div>
+	<div id="step2" class="homey-form-group" style="display:none;">
+		<label for="bathingSpot" class="homey-form-label"><span data-i18n="waterTemperature.pair.label"></span></label>
+		<select id="bathingSpot" style="width: 100%;"></select>
+	</div>
 </fieldset>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+	integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="application/javascript">
-	Homey.setTitle(Homey.__("waterTemp.pair.title"));
-	Homey.setSubtitle(Homey.__("waterTemp.pair.desc"));
-	$(document).ready(function() {
-		setTimeout(function() {
-			var regions;
+	Homey.setTitle(Homey.__("waterTemperature.pair.title"));
+	Homey.setSubtitle(Homey.__("waterTemperature.pair.desc"));
+	$(document).ready( function () {
+		setTimeout(function () {
+			let regions;
+			let coords;
 
-			$.ajax({
-				url: 'https://www.yr.no/api/v0/regions/NO',
-				dataType: 'json',
-				headers: {
-					'User-Agent': 'Homey-Norske-tjenester/1.0',
-					'Accept': 'application/json'
-				}
-			}).done(async function(data) {
-				regions = data.regions;
-				await initialiserSelect2();
-			}).fail(function(error) {
-				console.error('Error fetching regions:', error);
+			// Get user's location
+			Homey.emit('getLocation').then(function (result) {
+				coords = result;
 			});
 
-			async function initialiserSelect2() {
+			// Haversine formula for calculating distance between two coordinates
+			function haversineDistance(lat1, lon1, lat2, lon2) {
+				const R = 6371; // Radius of Earth in km
+				const dLat = (lat2 - lat1) * (Math.PI / 180);
+				const dLon = (lon2 - lon1) * (Math.PI / 180);
+				const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+					Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+					Math.sin(dLon / 2) * Math.sin(dLon / 2);
+				const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+				return R * c;
+			}
+
+			// 1. Get regions and initialize region select
+			Homey.emit("getRegions").then(function (result) {
+				regions = result;
 				$('#region').select2({
 					placeholder: 'Velg region...',
-					data: regions.map(item => ({
-						id: item.id,
-						text: item.name,
-						region: item
-					})),
-					matcher: function(params, data) {
-						if ($.trim(params.term) === '') {
-							return data;
-						}
-						if (data.text.toLowerCase().includes(params.term.toLowerCase())) {
-							return data;
-						}
-						return null;
-					},
+					allowClear: true,
+					data: [
+						{ id: '', text: 'Velg region...' }, // Placeholder option
+						...regions.map(item => ({
+							id: item.id,
+							text: item.name
+						}))
+					]
 				});
+				// Ensure the placeholder is selected by default
+				$('#region').val('').trigger('change');
+			});
 
-				$('#region').on('select2:select', function(e) {
-					var selectedData = e.params.data;
-					console.log('Selected region:', JSON.stringify(selectedData, null, 2));
-					
-					// Get water temperatures for the selected region
-					$.ajax({
-						url: `https://www.yr.no/api/v0/regions/${selectedData.id}/watertemperatures?language=nb`,
-						dataType: 'json',
-						headers: {
-							'User-Agent': 'Homey-Norske-tjenester/1.0',
-							'Accept': 'application/json'
-						}
-					}).done(function(tempData) {
-						if (tempData && tempData.spots && tempData.spots.length > 0) {
-							const spotData = {
-								id: selectedData.id,
-								name: selectedData.text,
-								region: selectedData.text,
-								subregion: '',
-								temperature: tempData.spots[0].temperature,
-								time: tempData.spots[0].time,
-								location: {
-									position: tempData.spots[0].location.position
-								},
-								sourceDisplayName: 'yr.no'
-							};
-							
-							Homey.emit('saveBathingSpot', spotData).then(function(result) {
-								if (result === true) {
-									Homey.emit('list_devices').then(function() {
-										Homey.nextView();
-									});
-								}
-							});
-						} else {
-							console.error('No water temperature data available for this region');
-						}
-					}).fail(function(error) {
-						console.error('Error fetching water temperatures:', error);
-					});
-				});
-			}
-		}, 1000);
+			// 2. When region is selected, fetch bathing spots for that region
+			$('#region').on('select2:select', async function (e) {
+				const selectedRegion = e.params.data;
+				$('#step1').hide();
+				$('#step2').show();
+
+				// Show loading in bathingSpot select
+				const $bathingSpot = $('#bathingSpot');
+				$bathingSpot.empty().append(new Option('Laster badeplasser...', '', true, true)).trigger('change');
+
+				try {
+					Homey.emit("getTemperatures", selectedRegion.id).then(function (tempData) {
+					$bathingSpot.empty();
+					if (tempData && tempData.length > 0) {
+						$bathingSpot.append(new Option('Velg en badeplass', '', true, true));
+						tempData.forEach(spot => {
+							let distanceText = '';
+							if (coords && spot && spot.position.lat && spot.position.lon) {
+								const distance = haversineDistance(
+									coords.lat,
+									coords.lon,
+									spot.position.lat,
+									spot.position.lon
+								);
+								distanceText = ` - ${distance.toFixed(2)} km`;
+							}
+							const option = new Option(
+								`${spot.locationName} (${spot.temperature}°C)${distanceText}`,
+								spot.id,
+								false,
+								false
+							);
+							// Store spot data for later use
+							$(option).data('spot', spot);
+							$bathingSpot.append(option);
+						});
+						$bathingSpot.select2({
+							placeholder: 'Velg en badeplass...'
+						});
+					} else {
+						$bathingSpot.append(new Option('Ingen badeplasser funnet', '', true, true));
+					}
+				})
+				} catch (error) {
+					console.error('Error fetching water temperatures:', error);
+					$bathingSpot.empty().append(new Option('Kunne ikke hente badeplasser', '', true, true));
+				}
+			});
+
+			// 3. When bathing spot is selected, save it and continue
+			$('#bathingSpot').on('select2:select', async function (e) {
+				const spotId = $(this).val();
+				const option = $(this).find('option:selected');
+				const spot = option.data('spot');
+				if (!spot) return;
+				const spotData = {
+					id: spot.locationId,
+					name: spot.locationName,
+					county: spot.county,
+					municipality: spot.municipality,
+					position: spot.position,
+					temperature: spot.temperature,
+					time: spot.time,
+					sourceDisplayName: 'yr.no'
+				};
+			
+			await Homey.emit('saveBathingSpot', spotData);
+			await Homey.emit('list_devices')
+			await Homey.nextView()
+			
+			});
+			
+
+		});
 	});
 </script>

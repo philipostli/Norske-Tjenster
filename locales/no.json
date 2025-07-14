@@ -90,7 +90,8 @@
 		"pair": {
 			"title": "Badetemperatur",
 			"desc": "Skriv inn badeplass i feltet under",
-			"label": "Søk etter badeplass"
+			"label": "Søk etter badeplass",
+			"spot": "Badeplass"
 		}
 	},
     "airQuality": {
