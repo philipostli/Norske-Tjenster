@@ -1,0 +1,173 @@
+{
+  "name": {
+    "en": "Waste collection",
+    "no": "Renovasjon"
+  },
+  "deprecated": true,
+  "class": "sensor",
+  "capabilities": [
+    "measure_next_waste_days_left"
+  ],
+  "uiComponent": "sensor",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/renovasjon/assets/images/small.png",
+    "large": "/drivers/renovasjon/assets/images/large.png"
+  },
+  "icon": "/drivers/renovasjon/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start",
+      "navigation": {
+        "next": "loadingData"
+      }
+    },
+    {
+      "id": "loadingData"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices",
+        "prev": "start"
+      },
+      "options": {
+        "singular": true
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {
+    "approximation": {
+      "usageConstant": 0
+    }
+  },
+  "id": "renovasjon",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Adresse innstillinger",
+        "en": "Address settings"
+      },
+      "children": [
+        {
+          "id": "streetName",
+          "type": "label",
+          "label": {
+            "no": "Gatenavn",
+            "en": "Street name"
+          }
+        },
+        {
+          "id": "houseNumber",
+          "type": "label",
+          "label": {
+            "no": "Husnummer",
+            "en": "House number"
+          }
+        },
+        {
+          "id": "postCode",
+          "type": "label",
+          "label": {
+            "no": "Postnummer",
+            "en": "Postal code"
+          }
+        },
+        {
+          "id": "countyId",
+          "type": "label",
+          "label": {
+            "no": "Kommunenr",
+            "en": "County ID"
+          }
+        },
+        {
+          "id": "addressCode",
+          "type": "label",
+          "label": {
+            "no": "Adressekode",
+            "en": "Address code"
+          }
+        },
+        {
+          "id": "provider",
+          "type": "label",
+          "label": {
+            "no": "Leverandør",
+            "en": "Service provider"
+          }
+        },
+        {
+          "id": "addressID",
+          "type": "label",
+          "label": {
+            "no": "AdresseID hos din leverandør",
+            "en": "AddressID with your provider"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Avfallsinnstillinger",
+        "en": "Waste settings"
+      },
+      "children": [
+        {
+          "id": "wasteTypeGeneral",
+          "type": "checkbox",
+          "label": {
+            "no": "Restavfall",
+            "en": "General waste"
+          }
+        },
+        {
+          "id": "wasteTypeGeneral",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Restavfall",
+            "en": "General waste"
+          }
+        },
+        {
+          "id": "wasteTypePaper",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Papp/papiravffall",
+            "en": "Paper waste"
+          }
+        },
+        {
+          "id": "wasteTypeBio",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Matavfall",
+            "en": "Bio waste"
+          }
+        },
+        {
+          "id": "wasteTypePlastic",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Plastavfall",
+            "en": "Plastic waste"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "name": {
+    "no": "Entur",
+    "en": "Entur"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "sensor_entur_bus_stop",
+    "sensor_entur_bus_line",
+    "sensor_entur_bus_dest",
+    "sensor_entur_bus_dep",
+    "sensor_entur_bus_fullText"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/entur/assets/images/small.png",
+    "large": "/drivers/entur/assets/images/large.png",
+    "xlarge": "/drivers/entur/assets/images/xlarge.png"
+  },
+  "icon": "/drivers/entur/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {},
+  "repair": [
+    {
+      "id": "settings"
+    }
+  ],
+  "id": "entur",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Stasjonsinnstillinger",
+        "en": "Station settings"
+      },
+      "children": [
+        {
+          "id": "station",
+          "type": "label",
+          "label": {
+            "no": "Stasjon",
+            "en": "Station"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Avgangsinnstillinger",
+        "en": "Departure settings"
+      },
+      "children": [
+        {
+          "id": "departureText",
+          "type": "dropdown",
+          "label": {
+            "no": "Avganginformasjon",
+            "en": "Departure information"
+          },
+          "values": [
+            {
+              "id": "departureTextStatic",
+              "label": {
+                "no": "Statisk",
+                "en": "Static"
+              }
+            },
+            {
+              "id": "departureTextRotate",
+              "label": {
+                "no": "Roterende",
+                "en": "Rotating"
+              }
+            },
+            {
+              "id": "departureTextSlide",
+              "label": {
+                "no": "Skyvende",
+                "en": "Sliding"
+              }
+            }
+          ]
+        },
+        {
+          "id": "timeToWalk",
+          "type": "number",
+          "label": {
+            "no": "Slingringsmonn",
+            "en": "Slack"
+          },
+          "hint": {
+            "no": "Legg inn tiden det tar å gå hjemmefra til stasjonen.",
+            "en": "Enter the time it takes to walk from home to the station."
+          },
+          "value": 0,
+          "min": 0,
+          "max": 120,
+          "units": {
+            "no": "minutter",
+            "en": "minutes"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Ruteinnstillinger (Endre under \"Reparer\")",
+        "en": "Route settings (Change under \"Repair\")"
+      },
+      "children": [
+        {
+          "id": "routeInfo",
+          "type": "label",
+          "label": {
+            "no": "INFO",
+            "en": "INFO"
+          },
+          "value": "For å filtrere ruter, må du trykke på 'Reparer' knappen til enheten."
+        },
+        {
+          "id": "routeFilter",
+          "type": "label",
+          "label": {
+            "no": "Rutefilter",
+            "en": "Route filter"
+          },
+          "value": "[]"
+        },
+        {
+          "id": "dirFilter",
+          "type": "label",
+          "label": {
+            "no": "Retningsfilter",
+            "en": "Direction filter"
+          },
+          "value": "[]"
+        }
+      ]
+    }
+  ]
+}

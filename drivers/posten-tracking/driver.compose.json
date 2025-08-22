@@ -1,0 +1,58 @@
+{
+  "name": {
+    "no": "Posten/Bring Sporing",
+    "en": "Posten/Bring Parcel Tracking"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "sensor_tracking_sender",
+    "sensor_tracking"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/posten-tracking/assets/images/small.png",
+    "large": "/drivers/posten-tracking/assets/images/large.png",
+    "xlarge": "/drivers/posten-tracking/assets/images/xlarge.png"
+  },
+  "icon": "/drivers/posten-tracking/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {},
+  "id": "posten-tracking",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Sporingsinnstillinger",
+        "en": "Tracking settings"
+      },
+      "children": [
+        {
+          "id": "trackingNumber",
+          "type": "text",
+          "label": {
+            "no": "Sporingsnummer",
+            "en": "Tracking number"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "name": {
+    "en": "Fuel Prices",
+    "no": "Drivstoffpris"
+  },
+  "deprecated": true,
+  "class": "sensor",
+  "capabilities": [
+    "sensor_fuelprices_stationName",
+    "meter_fuelprices_gasPrice95",
+    "meter_fuelprices_gasPrice98",
+    "meter_fuelprices_dieselPrice",
+    "meter_fuelprices_coloredDieselPrice",
+    "sensor_fuelprices_lastUpdate"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/fuelprices/assets/images/small.png",
+    "large": "/drivers/fuelprices/assets/images/large.png"
+  },
+  "icon": "/drivers/fuelprices/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {
+    "approximation": {
+      "usageConstant": 0
+    }
+  },
+  "id": "fuelprices",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Rabatt-innstillinger",
+        "en": "Discount settings"
+      },
+      "children": [
+        {
+          "id": "365PrivatDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "365 Privat",
+            "en": "365 Privat"
+          },
+          "hint": {
+            "no": "3.65% rabatt hos Esso + 34 øre i rabatt per liter hos Esso. \r\nGir 2% drivstoffrabatt på alle andre stasjoner.",
+            "en": "3.65% discount at Esso + 34 øre discount per liter at Esso. \r\nGives 2% fuel discount at all other stations."
+          }
+        },
+        {
+          "id": "coopDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Coop Medlem",
+            "en": "Coop Medlem"
+          },
+          "hint": {
+            "no": "45øre/liter i rabatt på betjente Circle K-stasjoner. \r\n25øre/l i rabatt Circle K Automat.\r\n45øre/l i rabatt hos Best-stasjoner.",
+            "en": "45øre/l discount at manned Circle K stations. \r\n25øre/l discount at Circle K Automat.\r\n45øre/l discount at Best stations."
+          }
+        },
+        {
+          "id": "trumfDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Trumf",
+            "en": "Trumf"
+          },
+          "hint": {
+            "no": "30øre/l i rabatt hos betjente Shell-stasjoner.",
+            "en": "30øre/l discount at manned Shell stations."
+          }
+        },
+        {
+          "id": "tankenDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Tankenkortet",
+            "en": "Tanken-card"
+          },
+          "hint": {
+            "no": "50øre/l i rabatt på Tanken-stasjoner. \r\n45øre/l i rabatt på alle Esso-stasjoner.",
+            "en": "50øre/l discount at Tanken stations. \r\n45øre/l discount at all Esso stations."
+          }
+        },
+        {
+          "id": "yxVisaDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "YX Visa",
+            "en": "YX Visa"
+          },
+          "hint": {
+            "no": "40øre/l i rabatt på YX-stasjoner.",
+            "en": "40øre/l discount at YX stations."
+          }
+        },
+        {
+          "id": "flexiVisaDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "FlexiVisa",
+            "en": "FlexiVisa"
+          },
+          "hint": {
+            "no": "4% rabatt på drivstoff på alle stasjoner.",
+            "en": "4% discount on fuel at all stations."
+          }
+        },
+        {
+          "id": "essoMasterCardDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Esso MasterCard",
+            "en": "Esso MasterCard"
+          },
+          "hint": {
+            "no": "40øre/l i rabatt på alle Esso-stasjoner.",
+            "en": "40øre/l discount at all Esso stations."
+          }
+        },
+        {
+          "id": "shellMasterCardDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Shell MasterCard",
+            "en": "Shell MasterCard"
+          },
+          "hint": {
+            "no": "40øre/l i rabatt på alle Shell-stasjoner.",
+            "en": "40øre/l discount at all Shell stations."
+          }
+        },
+        {
+          "id": "snarveienPlussDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Shell SnarveienPLUSS",
+            "en": "Shell SnarveienPLUSS"
+          },
+          "hint": {
+            "no": "50øre/l i rabatt på bemannede Shell-stasjoner.",
+            "en": "50øre/l discount at manned Shell stations."
+          }
+        },
+        {
+          "id": "nafXtraDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "NAF Xtra",
+            "en": "NAF Xtra"
+          },
+          "hint": {
+            "no": "65øre/l i rabatt hos Circle K. \r\n45øre/l i rabatt hos Circle K Automat. \r\n65øre/l i rabatt hos Best-stasjoner.",
+            "en": "65øre/l discount at Circle K. \r\n45øre/l discount at Circle K Automat. \r\n65øre/l discount at Best stations."
+          }
+        },
+        {
+          "id": "nafMedlemDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "NAF Medlem",
+            "en": "NAF Medlem"
+          },
+          "hint": {
+            "no": "45øre/l i rabatt hos Circle K. \r\n25øre/l i rabatt hos Circle K Automat. \r\n45øre/l i rabatt hos Best-stasjoner.",
+            "en": "45øre/l discount at Circle K. \r\n25øre/l discount at Circle K Automat. \r\n45øre/l discount at Best stations."
+          }
+        },
+        {
+          "id": "dnbMasterCardDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "DNB MasterCard",
+            "en": "DNB MasterCard"
+          },
+          "hint": {
+            "no": "3% rabatt på drivstoff på alle stasjoner med Ung, Pluss eller DNB MasterCard.",
+            "en": "3% discount on fuel at all stations with Ung, Pluss or DNB MasterCard."
+          }
+        },
+        {
+          "id": "dnbMasterCardSagaDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "DNB MasterCard SAGA/PB",
+            "en": "DNB MasterCard SAGA/PB"
+          },
+          "hint": {
+            "no": "4% rabatt på drivstoff på alle stasjoner med SAGA eller Private Banking MasterCard.",
+            "en": "4% discount on fuel at all stations with SAGA or Private Banking MasterCard."
+          }
+        },
+        {
+          "id": "circleKExtraMasterCardDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "Circle K EXTRA MasterCard",
+            "en": "Circle K EXTRA MasterCard"
+          },
+          "hint": {
+            "no": "20øre/l i rabatt på Circle K Automat-stasjoner. \r\n40øre/l i rabatt på bemannede Circle K-stasjoner. \r\n40øre/l i rabatt på Best-stasjoner.",
+            "en": "20øre/l discount at Circle K Automat stations. \r\n40øre/l discount at manned Circle K stations. \r\n40øre/l discount at Best stations."
+          }
+        },
+        {
+          "id": "drivEnergiDiscount",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "no": "DRIVenergi",
+            "en": "DRIVenergi"
+          },
+          "hint": {
+            "no": "40øre/l i rabatt på Driv-stasjoner.",
+            "en": "40øre/l discount at Driv stations."
+          }
+        }
+      ]
+    }
+  ]
+}

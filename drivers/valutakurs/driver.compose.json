@@ -1,0 +1,108 @@
+{
+  "name": {
+    "no": "Valutakurs",
+    "en": "Currency exchange rate"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "meter_exchangerates_eur",
+    "meter_exchangerates_usd",
+    "meter_exchangerates_gbp",
+    "meter_exchangerates_dkk",
+    "meter_exchangerates_sek",
+    "meter_exchangerates_php"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/valutakurs/assets/images/small.png",
+    "large": "/drivers/valutakurs/assets/images/large.png"
+  },
+  "icon": "/drivers/valutakurs/assets/icon.svg",
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {
+    "approximation": {
+      "usageConstant": 0
+    }
+  },
+  "id": "valutakurs",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Valuta innstillinger",
+        "en": "Currency settings"
+      },
+      "children": [
+        {
+          "id": "eur",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis EUR",
+            "en": "Show EUR"
+          }
+        },
+        {
+          "id": "usd",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis USD",
+            "en": "Show USD"
+          }
+        },
+        {
+          "id": "gbp",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis GBP",
+            "en": "Show GBP"
+          }
+        },
+        {
+          "id": "dkk",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis DKK",
+            "en": "Show DKK"
+          }
+        },
+        {
+          "id": "sek",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis SEK",
+            "en": "Show SEK"
+          }
+        },
+        {
+          "id": "php",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Vis PHP",
+            "en": "Show PHP"
+          }
+        }
+      ]
+    }
+  ]
+}

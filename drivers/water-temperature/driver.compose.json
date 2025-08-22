@@ -1,0 +1,58 @@
+{
+  "name": {
+    "no": "Badetemperatur",
+    "en": "Water temperature"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "sensor_watertemp_location",
+    "measure_temperature",
+    "sensor_watertemp_lastUpdate"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/water-temperature/assets/images/small.png",
+    "large": "/drivers/water-temperature/assets/images/large.png"
+  },
+  "icon": "/drivers/water-temperature/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {
+    "approximation": {
+      "usageConstant": 0
+    }
+  },
+  "id": "water-temperature",
+  "settings": [
+    {
+      "id": "bathingspot",
+      "type": "label",
+      "label": {
+        "no": "Badeplassens ID",
+        "en": "Bathing spot ID"
+      },
+      "value": "-",
+      "hint": {
+        "no": "Badeplassens ID",
+        "en": "Bathing spot ID"
+      }
+    }
+  ]
+}

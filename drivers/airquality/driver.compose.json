@@ -1,0 +1,105 @@
+{
+  "name": {
+    "en": "Air Quality Index",
+    "no": "Luftkvalitet"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_temperature",
+    "measure_humidity",
+    "measure_wind_strength",
+    "measure_wind_angle",
+    "measure_pressure",
+    "measure_rain",
+    "measure_no2",
+    "measure_pm10",
+    "measure_pm25",
+    "measure_o3"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/airquality/assets/images/small.png",
+    "large": "/drivers/airquality/assets/images/large.png",
+    "xlarge": "/drivers/airquality/assets/images/xlarge.png"
+  },
+  "icon": "/drivers/airquality/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "id": "airquality",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Stasjonsinnstillinger",
+        "en": "Station settings"
+      },
+      "children": [
+        {
+          "id": "stationId",
+          "type": "label",
+          "label": {
+            "no": "Stasjon",
+            "en": "Station"
+          }
+        },
+        {
+          "id": "stationName",
+          "type": "label",
+          "label": {
+            "no": "Stasjonsnavn",
+            "en": "Station name"
+          }
+        },
+        {
+          "id": "stationCoords",
+          "type": "label",
+          "label": {
+            "no": "Stasjonens koordinater",
+            "en": "Station coordinates"
+          }
+        },
+        {
+          "id": "stationElevation",
+          "type": "label",
+          "label": {
+            "no": "Stasjonens høyde over havet",
+            "en": "Station elevation"
+          }
+        },
+        {
+          "id": "stationArea",
+          "type": "label",
+          "label": {
+            "no": "Stasjonens område",
+            "en": "Station area"
+          }
+        },
+        {
+          "id": "stationCounty",
+          "type": "label",
+          "label": {
+            "no": "Stasjonens kommune",
+            "en": "Station county"
+          }
+        }
+      ]
+    }
+  ]
+}

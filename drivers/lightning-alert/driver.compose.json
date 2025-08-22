@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Lightning alert",
+    "no": "Lynvarsel"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "alarm_lightning_warning",
+    "sensor_lightning_peakCurrent",
+    "sensor_lightning_distance",
+    "sensor_lightning_location",
+    "sensor_lightning_timestamp"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/lightning-alert/assets/images/small.png",
+    "large": "/drivers/lightning-alert/assets/images/large.png",
+    "xlarge": "/drivers/lightning-alert/assets/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "id": "lightning-alert",
+  "settings": [
+    {
+      "id": "dangerRadius",
+      "type": "number",
+      "value": 10,
+      "label": {
+        "en": "Danger Radius",
+        "no": "Fare Radius"
+      },
+      "hint": {
+        "en": "Radius in kilometers to warn about lightning strikes near your location",
+        "no": "Radius i kilometer for å varsle om lynnedslag i nærheten av din lokasjon"
+      }
+    }
+  ]
+}

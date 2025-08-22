@@ -1,0 +1,85 @@
+{
+      "name": {
+        "no": "Flaggdager",
+        "en": "Norwegian Flagdays"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "sensor_flagg",
+        "meter_flagg_sensor"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/norwegianflagdays/assets/images/small.png",
+        "large": "/drivers/norwegianflagdays/assets/images/large.png"
+      },
+      "icon": "/drivers/norwegianflagdays/assets/icon.svg",
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "energy": {},
+      "id": "norwegianflagdays",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "no": "Dagtypefilter",
+            "en": "Day type filter"
+          },
+          "children": [
+            {
+              "id": "dayTypeHoliday",
+              "type": "checkbox",
+              "label": {
+                "no": "Helligdager",
+                "en": "Holidays"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeAnniversary",
+              "type": "checkbox",
+              "label": {
+                "no": "Merkedager",
+                "en": "Anniversaries"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeFlagDay",
+              "type": "checkbox",
+              "label": {
+                "no": "Flaggdager",
+                "en": "Flag days"
+              },
+              "value": true
+            },
+            {
+              "id": "dayTypeOther",
+              "type": "checkbox",
+              "label": {
+                "no": "Andre dager",
+                "en": "Other days"
+              },
+              "value": true
+            }
+          ]
+        }
+      ]
+    }

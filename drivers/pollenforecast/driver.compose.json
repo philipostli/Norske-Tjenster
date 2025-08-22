@@ -1,0 +1,178 @@
+{
+  "name": {
+    "no": "Pollenvarsel",
+    "en": "Pollen forecast"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "sensor_pollen_alder",
+    "sensor_pollen_birch",
+    "sensor_pollen_grass",
+    "sensor_pollen_hazel",
+    "sensor_pollen_mugwort",
+    "sensor_pollen_willow",
+    "sensor_timestamp"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/pollenforecast/assets/images/small.png",
+    "large": "/drivers/pollenforecast/assets/images/large.png"
+  },
+  "icon": "/drivers/pollenforecast/assets/icon.svg",
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "add_my_devices"
+      }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {},
+  "id": "pollenforecast",
+  "settings": [
+    {
+      "id": "region",
+      "type": "dropdown",
+      "value": "",
+      "label": {
+        "en": "County",
+        "no": "Fylke"
+      },
+      "values": [
+        {
+          "id": "akershus",
+          "label": "Akershus"
+        },
+        {
+          "id": "agder",
+          "label": "Agder"
+        },
+        {
+          "id": "buskerud",
+          "label": "Buskerud"
+        },
+        {
+          "id": "finnmark",
+          "label": "Finnmark"
+        },
+        {
+          "id": "innlandet",
+          "label": "Innlandet"
+        },
+        {
+          "id": "møre og romsdal",
+          "label": "Møre og Romsdal"
+        },
+        {
+          "id": "nordland",
+          "label": "Nordland"
+        },
+        {
+          "id": "oslo",
+          "label": "Oslo"
+        },
+        {
+          "id": "rogaland",
+          "label": "Rogaland"
+        },
+        {
+          "id": "telemark",
+          "label": "Telemark"
+        },
+        {
+          "id": "troms",
+          "label": "Troms"
+        },
+        {
+          "id": "trøndelag",
+          "label": "Trøndelag"
+        },
+        {
+          "id": "vestfold",
+          "label": "Vestfold"
+        },
+        {
+          "id": "vestland",
+          "label": "Vestland"
+        },
+        {
+          "id": "østfold",
+          "label": "Østfold"
+        }
+      ],
+      "hint": {
+        "en": "This is your county. If it does not match, you can change it.",
+        "no": "Dette er ditt fylke. Dersom det ikke stemmer, kan du endre det over."
+      }
+    },
+    {
+      "id": "displayType",
+      "type": "dropdown",
+      "value": "text",
+      "label": {
+        "en": "Display type",
+        "no": "Visningstype"
+      },
+      "values": [
+        {
+          "id": "text",
+          "label": {
+            "en": "Text",
+            "no": "Tekst"
+          }
+        },
+        {
+          "id": "number",
+          "label": {
+            "en": "Number",
+            "no": "Tall"
+          }
+        }
+      ],
+      "hint": {
+        "en": "This determines whether data is presented as text or number.",
+        "no": "Dette bestemmer om du ønsker dataen presentert som tekst eller tall."
+      }
+    },
+    {
+      "id": "dataType",
+      "type": "dropdown",
+      "value": "extended",
+      "label": {
+        "en": "Data type",
+        "no": "Data type"
+      },
+      "values": [
+        {
+          "id": "simple",
+          "label": {
+            "en": "Simple",
+            "no": "Enkel"
+          }
+        },
+        {
+          "id": "extended",
+          "label": {
+            "en": "Extended",
+            "no": "Utvidet"
+          }
+        }
+      ],
+      "hint": {
+        "en": "This determines whether data is presented as simple or extended.",
+        "no": "Dette bestemmer om du ønsker dataen presentert som enkel eller utvidet. Enkelt datasett inneholder samlet pollenoversikt per kategori, og utvidet inneholder pollenoversikt per art."
+      }
+    }
+  ]
+}

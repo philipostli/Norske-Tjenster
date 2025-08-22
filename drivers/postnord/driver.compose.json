@@ -1,0 +1,57 @@
+{
+  "name": {
+    "no": "PostNord Sporing",
+    "en": "PostNord Tracking"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "sensor_PostNord.sender",
+    "sensor_PostNord.info"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/postnord/assets/images/small.png",
+    "large": "/drivers/postnord/assets/images/large.png"
+  },
+  "icon": "/drivers/postnord/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {},
+  "id": "postnord",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Sporingsinnstillinger",
+        "en": "Tracking settings"
+      },
+      "children": [
+        {
+          "id": "trackingNumber",
+          "type": "text",
+          "label": {
+            "no": "Sporingsnummer",
+            "en": "Tracking number"
+          }
+        }
+      ]
+    }
+  ]
+}

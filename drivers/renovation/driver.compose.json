@@ -1,0 +1,214 @@
+{
+  "name": {
+    "en": "Waste collection",
+    "no": "Renovasjon"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_next_waste_days_left"
+  ],
+  "uiComponent": "sensor",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "/drivers/renovation/assets/images/small.png",
+    "large": "/drivers/renovation/assets/images/large.png"
+  },
+  "icon": "/drivers/renovation/assets/icon.svg",
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices",
+        "prev": "start"
+      },
+      "options": {
+        "singular": true
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "energy": {
+    "approximation": {
+      "usageConstant": 0
+    }
+  },
+  "id": "renovation",
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "no": "Avfallskalender API",
+        "en": "Waste calendar API"
+      },
+      "children": [
+        {
+          "id": "apiVersion",
+          "type": "label",
+          "value": "1.0.0",
+          "label": {
+            "no": "API versjon",
+            "en": "API version"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Adresse innstillinger",
+        "en": "Address settings"
+      },
+      "children": [
+        {
+          "id": "address",
+          "type": "label",
+          "value": "-",
+          "label": {
+            "no": "Adresse",
+            "en": "Address"
+          }
+        },
+        {
+          "id": "provider",
+          "type": "label",
+          "value": "-",
+          "label": {
+            "no": "Leverandør",
+            "en": "Service provider"
+          }
+        },
+        {
+          "id": "addressID",
+          "type": "label",
+          "value": "-",
+          "label": {
+            "no": "AdresseID hos leverandør",
+            "en": "AddressID with your provider"
+          }
+        },
+        {
+          "id": "countyId",
+          "type": "label",
+          "value": "-",
+          "label": {
+            "no": "Kommunenr",
+            "en": "County ID"
+          }
+        },
+        {
+          "id": "addressCode",
+          "type": "label",
+          "value": "-",
+          "label": {
+            "no": "Adressekode",
+            "en": "Address code"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Flow innstillinger [BETA]",
+        "en": "Flow settings [BETA]"
+      },
+      "children": [
+        {
+          "id": "flowTime",
+          "type": "text",
+          "value": "20:00",
+          "label": {
+            "no": "Når skal flowen kjøres? (time)",
+            "en": "When should the flow run? (hour)"
+          },
+          "hint": {
+            "no": "Format: HH:MM",
+            "en": "Format: HH:MM"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "no": "Avfallsinnstillinger",
+        "en": "Waste settings"
+      },
+      "children": [
+        {
+          "id": "waste_general",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Restavfall",
+            "en": "General waste"
+          }
+        },
+        {
+          "id": "waste_paper",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Papp/papiravfall",
+            "en": "Paper waste"
+          }
+        },
+        {
+          "id": "waste_plastic",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Plastavfall",
+            "en": "Plastic waste"
+          }
+        },
+        {
+          "id": "waste_bio",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Matavfall",
+            "en": "Bio waste"
+          }
+        },
+        {
+          "id": "waste_glass",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Glass/metallavfall",
+            "en": "Glass/metal waste"
+          }
+        },
+        {
+          "id": "waste_garden",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Hageavfall",
+            "en": "Garden waste"
+          }
+        },
+        {
+          "id": "waste_christmastree",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "no": "Juletre",
+            "en": "Christmas tree"
+          }
+        }
+      ]
+    }
+  ]
+}
