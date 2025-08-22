@@ -35,10 +35,12 @@ class PollenForecast extends Device {
 
         if (!this.settings.region || this.settings.region === null || this.settings.region === undefined || this.settings.region === "" || this.settings.region === "null") {
             this.homey.app.dDebug('Region is not set, fetching region', 'PollenForecast');
+            this.homey.app.dDebug(`Device coordinates: lat=${this.device.lat}, lng=${this.device.lng}`, 'PollenForecast');
+            
             const region = await this.getRegion(null, { lat: this.device.lat, lng: this.device.lng });
-            await this.setSettings({ region: region?.region?.name?.toLowerCase() });
+            await this.setSettings({ region: region?.county?.toLowerCase() });
             this.settings = this.getSettings();
-            this.homey.app.dDebug('Region set to ' + region?.region?.name, 'PollenForecast');
+            this.homey.app.dDebug('Region set to ' + region?.county, 'PollenForecast');
         }
 
         this.homey.app.dInfo('PollenForecast has been initialized', 'PollenForecast');
@@ -406,7 +408,7 @@ class PollenForecast extends Device {
                     region
                 };
             }
-            this.homey.app.dDebug(`Region found: ${region?.name}`, 'PollenForecast');
+            this.homey.app.dDebug(`Region found using default: ${region?.name}`, 'PollenForecast');
             return {
                 county,
                 region
@@ -426,6 +428,7 @@ class PollenForecast extends Device {
             const region = availableRegions.find(r => r.id === regionId);
 
             this.homey.app.dDebug(`Region found: ${region?.name}`, 'PollenForecast');
+            this.homey.app.dDebug(`County from API: ${county}`, 'PollenForecast');
             return {
                 county,
                 region
